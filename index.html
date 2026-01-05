@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Supply Chain Data Analyst Dashboard</title>
 
   <!-- Bootstrap -->
@@ -35,11 +37,6 @@
       border:2px solid #dee2e6;
     }
 
-    .nav-link.active {
-      font-weight:600;
-      color:#0d6efd !important;
-    }
-
     .page-header {
       display:flex;
       align-items:center;
@@ -56,8 +53,28 @@
     .page-title img {
       width:80px;
     }
+
+    /* ===== RESPONSIVE MOBILE ===== */
+    @media (max-width: 768px) {
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .page-title img {
+        width: 50px;
+      }
+
+      .analyst-header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   </style>
+	
 </head>
+
 
 <body>
 
@@ -141,7 +158,7 @@
 
       <!-- FILTER -->
       <div class="row mb-4 g-2">
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-6 col-12 mb-3">
           <select id="filterCabang" class="form-select form-select-sm">
             <option value="">All Cabang</option>
             <option value="bjs">BJS</option>
@@ -171,7 +188,7 @@
           </select>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-lg-3 col-md-6 col-12 mb-3">
           <select id="filterPrincipal" class="form-select form-select-sm">
             <option value="">All Principal</option>
             <option value="ferrero">Ferrero</option>
@@ -205,10 +222,10 @@
         </ul>
 
         <div class="row">
-          <div class="col-md-3"><h6>Daily</h6><ul><li>Update Stock Kosong dashboard</li><li>Update data dan dashboard Forecast vs Sales Level 1, 2, dan 3</li><li>Update Stock Days Coverage & send report</li></ul></div>
-          <div class="col-md-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Control Stock Product tobe Inactive</li><li>Update Data Dashboard Disposal Principal</li><li>Control stock di TGR1 dan RT02</li><li>Tarik Data ZSDR003_DST</li><li>Update Data dan dashboard Dead Stock Slow Moving</li><li>PPT DSSM, data DOI dan DSSM HO</li></ul></div>
-          <div class="col-md-3"><h6>Monthly</h6><ul><li>Pendataan Principal</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD</li><li>Update data KPI Forecast Accuracy</li><li>KPI for sales (DSSM)</li><li>Tarik Data DSSM ZWMR014_BDD</li><li>Tarik data SO REJEC ZWMR021_BDD</li><li>Tarik Forecast 12 Bulan</li><li>Tarik Forcast level 1 dan 2</li></ul></div>
-          <div class="col-md-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>PIR</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Update Stock Kosong dashboard</li><li>Update data dan dashboard Forecast vs Sales Level 1, 2, dan 3</li><li>Update Stock Days Coverage & send report</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Control Stock Product tobe Inactive</li><li>Update Data Dashboard Disposal Principal</li><li>Control stock di TGR1 dan RT02</li><li>Tarik Data ZSDR003_DST</li><li>Update Data dan dashboard Dead Stock Slow Moving</li><li>PPT DSSM, data DOI dan DSSM HO</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>Pendataan Principal</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD</li><li>Update data KPI Forecast Accuracy</li><li>KPI for sales (DSSM)</li><li>Tarik Data DSSM ZWMR014_BDD</li><li>Tarik data SO REJEC ZWMR021_BDD</li><li>Tarik Forecast 12 Bulan</li><li>Tarik Forcast level 1 dan 2</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>PIR</li></ul></div>
         </div>
       </section>
 
@@ -228,10 +245,10 @@
         </ul>
 
         <div class="row">
-          <div class="col-md-3"><h6>Daily</h6><ul><li>Stock Daily</li><li>Dashboard Control Stock</li><li>Update Dashboard dan Data Review ED & Near ED</li><li>Dashboard Daily Monitoring Kendaraan</li><li>Update Stock Aging</li></ul></div>
-          <div class="col-md-3"><h6>Weekly</h6><ul><li>Intransit SnD</li><li>Movement Review ED & Near ED</li><li>Data Meeting Review ED & Near ED</li><li>Tarik Data ZSDR003_DST</li><li>Tarik Data ZSDR018_DST ALL</li><li>Disposal Non Principal CBG</li><li>Control Stock TG99</li><li>Volume Tonase HO</li><li>Meeting Review ED & Near ED (HO/CBG)</li><li>Data Distribusi Daging</li><li>PPT Review ED & Near ED</li><li>Absensi Meeting Review ED & Near ED</li><li>Update Data Dashboard Disposal Principal</li></ul></div>
-          <div class="col-md-3"><h6>Monthly</h6><ul><li>Data Pemusnahan Nasional (Bu Putu)</li><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Evaluasi Pergantian Batch Cabang</li><li>Data Pemusnahan Nasional </li><li>Data ED & Near ED 1 Month (Max tgl 6)</li><li>Data Bulanan Distribusi Ikan dan daging</li><li>Tarik data ZWMR003_WHS</li><li>Lost TO</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Tarik Data ZSDR004_DST (Tgl 7)</li><li>Compile ZSDR003_DST dan Value DO</li><li>Jadwal disposal non principle CBG</li><li>Iboard Warehouse Cabang</li></ul></div>
-          <div class="col-md-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Data Distribusi Daging</li><li>Dokumen Principal</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Stock Daily</li><li>Dashboard Control Stock</li><li>Update Dashboard dan Data Review ED & Near ED</li><li>Dashboard Daily Monitoring Kendaraan</li><li>Update Stock Aging</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Intransit SnD</li><li>Movement Review ED & Near ED</li><li>Data Meeting Review ED & Near ED</li><li>Tarik Data ZSDR003_DST</li><li>Tarik Data ZSDR018_DST ALL</li><li>Disposal Non Principal CBG</li><li>Control Stock TG99</li><li>Volume Tonase HO</li><li>Meeting Review ED & Near ED (HO/CBG)</li><li>Data Distribusi Daging</li><li>PPT Review ED & Near ED</li><li>Absensi Meeting Review ED & Near ED</li><li>Update Data Dashboard Disposal Principal</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>Data Pemusnahan Nasional (Bu Putu)</li><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Evaluasi Pergantian Batch Cabang</li><li>Data Pemusnahan Nasional </li><li>Data ED & Near ED 1 Month (Max tgl 6)</li><li>Data Bulanan Distribusi Ikan dan daging</li><li>Tarik data ZWMR003_WHS</li><li>Lost TO</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Tarik Data ZSDR004_DST (Tgl 7)</li><li>Compile ZSDR003_DST dan Value DO</li><li>Jadwal disposal non principle CBG</li><li>Iboard Warehouse Cabang</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Data Distribusi Daging</li><li>Dokumen Principal</li></ul></div>
         </div>
       </section>
 
@@ -252,10 +269,10 @@
         </ul>
 
         <div class="row">
-          <div class="col-md-3"><h6>Daily</h6><ul><li>Report TG01 Expired</li><li>Develop Dashboard Power BI</li><li>Control Dashboard Power BI</li><li>Report Status Delivery LK</li></ul></div>
-          <div class="col-md-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Tarik Data BAP Bermasalah</li><li>Update Dashboard Performance Distribusi Transport HO</li><li>Report Sloc HD01</li><li>Update Data Produktiftas Kendaraan HO (Irian 2 dan Irian 5) </li><li>Support Data Master Kendaraan </li><li>Update Data Dashboard Disposal Principal</li><li>Update dashboard Service Level</li><li>Update Dashboard Performance Cabang</li><li>Analisa Utilisasi Kendaraan Cabang</li><li>Analisa Produktivitas Kendaraan Cabang</li><li>Tarik Data ZSDR003_DST</li><li>Tarik Data ZSDR045_DST (Ontime Delivery HO DK dan CBG)</li><li>Tarik Data ZMMR043_WHS (Order Fullfilment LK HO)</li><li>Tarik Data ZSDT010_DST HO (Cost Dist Irian 2 dan Irian 5)</li></ul></div>
-          <div class="col-md-3"><h6>Monthly</h6><ul><li>KPI Iboard Cabang (Delivery Infull)</li><li>Proses Pemusnahan Principal (Sesuai approval Team Snd)</li><li>Pendataan Principal (Patokan tgl 1 setiap bulannya)</li><li>Update dan Report Dashboard Pendataan Disposal</li><li>KPI Iboard Cabang (Delivery Ontime)</li><li>Update Master Kendaraan SAP/CBG for Dashboard</li><li>Update Dashboard Achievement Forecast Akurasi</li><li>KPI Iboard Cabang (Utilisasi Kendaraan)</li><li>KPI Iboard Cabang (Produktivity Kendaraan)</li></ul></div>
-          <div class="col-md-3"><h6>Tentative</h6><ul><li>Create PO STO (Disposal Principal)</li><li>Proses FPPB Cabang</li><li>Perubahan Batch</li><li>BAP Bermasalah</li><li>Create & Revisi Dashboard Power BI</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Report TG01 Expired</li><li>Develop Dashboard Power BI</li><li>Control Dashboard Power BI</li><li>Report Status Delivery LK</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Tarik Data BAP Bermasalah</li><li>Update Dashboard Performance Distribusi Transport HO</li><li>Report Sloc HD01</li><li>Update Data Produktiftas Kendaraan HO (Irian 2 dan Irian 5) </li><li>Support Data Master Kendaraan </li><li>Update Data Dashboard Disposal Principal</li><li>Update dashboard Service Level</li><li>Update Dashboard Performance Cabang</li><li>Analisa Utilisasi Kendaraan Cabang</li><li>Analisa Produktivitas Kendaraan Cabang</li><li>Tarik Data ZSDR003_DST</li><li>Tarik Data ZSDR045_DST (Ontime Delivery HO DK dan CBG)</li><li>Tarik Data ZMMR043_WHS (Order Fullfilment LK HO)</li><li>Tarik Data ZSDT010_DST HO (Cost Dist Irian 2 dan Irian 5)</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>KPI Iboard Cabang (Delivery Infull)</li><li>Proses Pemusnahan Principal (Sesuai approval Team Snd)</li><li>Pendataan Principal (Patokan tgl 1 setiap bulannya)</li><li>Update dan Report Dashboard Pendataan Disposal</li><li>KPI Iboard Cabang (Delivery Ontime)</li><li>Update Master Kendaraan SAP/CBG for Dashboard</li><li>Update Dashboard Achievement Forecast Akurasi</li><li>KPI Iboard Cabang (Utilisasi Kendaraan)</li><li>KPI Iboard Cabang (Produktivity Kendaraan)</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO (Disposal Principal)</li><li>Proses FPPB Cabang</li><li>Perubahan Batch</li><li>BAP Bermasalah</li><li>Create & Revisi Dashboard Power BI</li></ul></div>
         </div>
       </section>
 
@@ -276,10 +293,10 @@
         </ul>
 
         <div class="row">
-          <div class="col-md-3"><h6>Daily</h6><ul><li>Control DAS</li><li>Monitoring System Datagate</li><li>Monitoring System SAP execution</li><li>Control Daily Macro execution</li><li>Update Dashboard BAP Bermasalah & send report</li><li>Update Dashboard Intransit</li></ul></div>
-          <div class="col-md-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Collect Branch Operational Whs & Log </li><li>Control Stock intransit </li><li>Analisa BAP bermasalah Vs intransit untuk Present</li><li>Update dan compile suhu gudang cabang</li><li>Update data MHE</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock X002 dan 9DPC</li><li>Tarik Data ZSDR003_DST</li></ul></div>
-          <div class="col-md-3"><h6>Monthly</h6><ul><li>Develop KPI Manager Inventory</li><li>Develop KPI Senior Supervisor Inventory</li><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Penilaian BLS</li><li>Updating Principal Claimable</li><li>Share Actual Branch Mapping</li><li>Dashboard KPI</li><li>Upload Mapping on DAS</li><li>KPI BPOM & ML BPOM(Import Team)</li><li>Control TAG (Transfer antar Gudang) HO</li><li>KPI IBOARD ( suhu storage, MHE)</li><li>KPI RBLM Dan Input Di web</li></ul></div>
-          <div class="col-md-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Control Issuing Valuated sit HO-Cbg dan sebaliknya</li><li>Control DO Monitoring Cbg</li><li>Control Forecast Level for BM</li><li>Control Forecast Level1, level2 dan level3</li><li>Control Forecast for Mapping Cabang</li><li>Control Booking Stock (pbi)</li><li>Control ITSD for system SAP/Magix xpa</li><li>Develop Macro vba for operational</li><li>Control and Solving BAP bermasalah</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Control DAS</li><li>Monitoring System Datagate</li><li>Monitoring System SAP execution</li><li>Control Daily Macro execution</li><li>Update Dashboard BAP Bermasalah & send report</li><li>Update Dashboard Intransit</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Collect Branch Operational Whs & Log </li><li>Control Stock intransit </li><li>Analisa BAP bermasalah Vs intransit untuk Present</li><li>Update dan compile suhu gudang cabang</li><li>Update data MHE</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock X002 dan 9DPC</li><li>Tarik Data ZSDR003_DST</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>Develop KPI Manager Inventory</li><li>Develop KPI Senior Supervisor Inventory</li><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Penilaian BLS</li><li>Updating Principal Claimable</li><li>Share Actual Branch Mapping</li><li>Dashboard KPI</li><li>Upload Mapping on DAS</li><li>KPI BPOM & ML BPOM(Import Team)</li><li>Control TAG (Transfer antar Gudang) HO</li><li>KPI IBOARD ( suhu storage, MHE)</li><li>KPI RBLM Dan Input Di web</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Control Issuing Valuated sit HO-Cbg dan sebaliknya</li><li>Control DO Monitoring Cbg</li><li>Control Forecast Level for BM</li><li>Control Forecast Level1, level2 dan level3</li><li>Control Forecast for Mapping Cabang</li><li>Control Booking Stock (pbi)</li><li>Control ITSD for system SAP/Magix xpa</li><li>Develop Macro vba for operational</li><li>Control and Solving BAP bermasalah</li></ul></div>
         </div>
       </section>
 
@@ -300,10 +317,10 @@
         </ul>
 		
         <div class="row">
-          <div class="col-md-3"><h6>Daily</h6><ul><li>Data Stock Availability (National & Cabang) & send report</li><li>Update + Email Value Gagal Kirim</li><li>Monitoring Data Alokasi</li></ul></div>
-          <div class="col-md-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock 9999</li><li>Tarik Data ZSDR003_DST</li><li>Processing Data Service Level using python</li><li>Update dashboard Service Level </li><li>Update Performance BLS/BLM Service Level</li><li>Update KPI BLS/BLM Kendaraan Rusak & Produktivitas Kendaraan</li><li>Email Update Service Level National & Cabang</li><li>Data Distribusi Daging</li></ul></div>
-          <div class="col-md-3"><h6>Monthly</h6><ul><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Gagal Kirim </li><li>Audit QGMP</li><li>Update KPI Service Level Pak Sophian</li><li>Minta Data Training</li></ul></div>
-          <div class="col-md-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Pembuatan Dasboard Power BI</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Data Stock Availability (National & Cabang) & send report</li><li>Update + Email Value Gagal Kirim</li><li>Monitoring Data Alokasi</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock 9999</li><li>Tarik Data ZSDR003_DST</li><li>Processing Data Service Level using python</li><li>Update dashboard Service Level </li><li>Update Performance BLS/BLM Service Level</li><li>Update KPI BLS/BLM Kendaraan Rusak & Produktivitas Kendaraan</li><li>Email Update Service Level National & Cabang</li><li>Data Distribusi Daging</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Gagal Kirim </li><li>Audit QGMP</li><li>Update KPI Service Level Pak Sophian</li><li>Minta Data Training</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Pembuatan Dasboard Power BI</li></ul></div>
         </div>
       </section>
 
@@ -325,10 +342,10 @@
 		
 
         <div class="row">
-          <div class="col-md-3"><h6>Daily</h6><ul><li>Evaluasi & Compile Report Akurasi Cycle Count</li><li>Milk For Halma dan Dashboard</li><li>Monitoring Jobdesk</li><li>Update Dashboard Cycle Count</li></ul></div>
-          <div class="col-md-3"><h6>Weekly</h6><ul><li>Support Data Irian 2/Iran 5</li><li>Processing Data Control Stock TS01 vs Pendataan using python </li><li>Tarik Data Masterl Material ( Mara ) ZMMR003_BDD</li><li>Movement Review ED & Near ED</li><li>Tarik PO Open (ME2N)</li><li>BIN Occupancy</li><li>Update Data Dashboard Disposal Principal</li><li>Evalusi DO Outstanding</li><li>Tarik Data ZSDR003_DST</li><li>Processing Data Control Stock TS01 using python</li><li>Control Stock TS02</li></ul></div>
-          <div class="col-md-3"><h6>Monthly</h6><ul><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Data National Inbound</li><li>Collect data KPI for sales</li><li>DO to POD</li><li>Buat Jadwal Off sabtu & Meeting Internal</li><li>Compile data Omset dan margin dari BDD Sales</li><li>Collect data Audit Internal Stock Taking dan Stock Opname</li><li>Picking Accuracy Processing Data Using Python</li><li>Product Handling/Rusak Barang</li><li>Update dashboard Stock Opname</li><li>DO Outstanding</li><li>Support WH/Accounting Jika ada kendala Proses Macro Stock Taking bermasalah</li><li>KPI Warehouse Cabang</li><li>Buat Jadwal Cycle Count & Stock Opname Cabang</li><li>Evaluasi Report Stock Taking/Stock Opname</li></ul></div>
-          <div class="col-md-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Support Data Audit</li><li>Dokumen Principal</li><li>Batch Strategy</li><li>BAP bermasalah</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Evaluasi & Compile Report Akurasi Cycle Count</li><li>Milk For Halma dan Dashboard</li><li>Monitoring Jobdesk</li><li>Update Dashboard Cycle Count</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Support Data Irian 2/Iran 5</li><li>Processing Data Control Stock TS01 vs Pendataan using python </li><li>Tarik Data Masterl Material ( Mara ) ZMMR003_BDD</li><li>Movement Review ED & Near ED</li><li>Tarik PO Open (ME2N)</li><li>BIN Occupancy</li><li>Update Data Dashboard Disposal Principal</li><li>Evalusi DO Outstanding</li><li>Tarik Data ZSDR003_DST</li><li>Processing Data Control Stock TS01 using python</li><li>Control Stock TS02</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Data National Inbound</li><li>Collect data KPI for sales</li><li>DO to POD</li><li>Buat Jadwal Off sabtu & Meeting Internal</li><li>Compile data Omset dan margin dari BDD Sales</li><li>Collect data Audit Internal Stock Taking dan Stock Opname</li><li>Picking Accuracy Processing Data Using Python</li><li>Product Handling/Rusak Barang</li><li>Update dashboard Stock Opname</li><li>DO Outstanding</li><li>Support WH/Accounting Jika ada kendala Proses Macro Stock Taking bermasalah</li><li>KPI Warehouse Cabang</li><li>Buat Jadwal Cycle Count & Stock Opname Cabang</li><li>Evaluasi Report Stock Taking/Stock Opname</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Support Data Audit</li><li>Dokumen Principal</li><li>Batch Strategy</li><li>BAP bermasalah</li></ul></div>
         </div>
       </section>
 
@@ -375,4 +392,5 @@
 </script>
 </body>
 </html>
+
 
