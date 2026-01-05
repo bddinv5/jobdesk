@@ -79,11 +79,11 @@
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-dark px-3">
+<nav class="navbar navbar-dark px-3 d-flex justify-content-between">
   <div class="d-flex align-items-center gap-2">
-    <button class="btn btn-outline-light btn-sm"
+    <button class="btn btn-outline-light btn-sm d-md-none"
             data-bs-toggle="offcanvas"
-            data-bs-target="#sidebarOffcanvas">
+            data-bs-target="#mobileSidebar">
       ☰
     </button>
     <span class="navbar-brand fw-bold mb-0">
@@ -118,33 +118,12 @@
 
   </div>
 </div>
-<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas">
-  <div class="offcanvas-header">
-    <h6 class="offcanvas-title">TEAM</h6>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-  </div>
-
-  <div class="offcanvas-body">
-    <input type="text"
-           class="form-control form-control-sm mb-3"
-           placeholder="Search name...">
-
-    <ul class="nav flex-column">
-      <li><a class="nav-link" href="#alya" data-bs-dismiss="offcanvas">Alya</a></li>
-      <li><a class="nav-link" href="#fincha" data-bs-dismiss="offcanvas">Fincha</a></li>
-      <li><a class="nav-link" href="#hafiz" data-bs-dismiss="offcanvas">Hafiz</a></li>
-      <li><a class="nav-link" href="#irvan" data-bs-dismiss="offcanvas">Irvan</a></li>
-      <li><a class="nav-link" href="#liyana" data-bs-dismiss="offcanvas">Liyana</a></li>
-      <li><a class="nav-link" href="#samsudin" data-bs-dismiss="offcanvas">Samsudin</a></li>
-    </ul>
-  </div>
-</div>
 	
 <div class="container-fluid">
   <div class="row">
 
     <!-- SIDEBAR -->
-	  
+    <aside class="col-lg-2 col-md-3 sidebar p-3 d-none d-md-block">
       <h6 class="text-muted">TEAM</h6>
 
       <input type="text" id="searchInput"
@@ -162,7 +141,7 @@
     </aside>
 
     <!-- CONTENT -->
-    <main class="col-12 p-4">
+    <main class="col-md-10 p-4">
 
       <!-- HEADER + DOWNLOAD -->
       <div class="page-header">
@@ -413,7 +392,5 @@
 </script>
 </body>
 </html>
-
-
 
 
