@@ -381,26 +381,21 @@
   function applyFilter() {
     const cabangValue = filterCabang.value.toLowerCase();
     const principalValue = filterPrincipal.value.toLowerCase();
-	const picValue = filterPIC.value.toLowerCase();
+    const picValue = filterPIC.value.toLowerCase();
 
     cards.forEach(card => {
       const cabangData = card.dataset.cabang.toLowerCase();
       const principalData = card.dataset.principal.toLowerCase();
-	  const picData = card.dataset.pic.toLowerCase();
+      const picData = card.id.toLowerCase(); // 🔥 FIX DI SINI
 
       const matchCabang =
         cabangValue === "" || cabangData.includes(cabangValue);
 
       const matchPrincipal =
-        principalValue === "" ||
-        principalData.includes(principalValue) ||
-        principalData === "all";
+        principalValue === "" || principalData.includes(principalValue);
 
-	  const matchPIC =
-        picValue === "" ||
-        picData.includes(picValue) ||
-        picData === "all";
-
+      const matchPIC =
+        picValue === "" || picData === picValue;
 
       if (matchCabang && matchPrincipal && matchPIC) {
         card.style.display = "block";
@@ -416,6 +411,7 @@
 </script>
 </body>
 </html>
+
 
 
 
