@@ -375,15 +375,18 @@
 <script>
   const filterCabang = document.getElementById("filterCabang");
   const filterPrincipal = document.getElementById("filterPrincipal");
+  const filterPIC = document.getElementById("filterPIC");
   const cards = document.querySelectorAll(".analyst-card");
 
   function applyFilter() {
     const cabangValue = filterCabang.value.toLowerCase();
     const principalValue = filterPrincipal.value.toLowerCase();
+	const picValue = filterPIC.value.toLowerCase();
 
     cards.forEach(card => {
       const cabangData = card.dataset.cabang.toLowerCase();
       const principalData = card.dataset.principal.toLowerCase();
+	  const picData = card.dataset.pic.toLowerCase();
 
       const matchCabang =
         cabangValue === "" || cabangData.includes(cabangValue);
@@ -393,7 +396,13 @@
         principalData.includes(principalValue) ||
         principalData === "all";
 
-      if (matchCabang && matchPrincipal) {
+	  const matchPIC =
+        picValue === "" ||
+        picData.includes(picValue) ||
+        picData === "all";
+
+
+      if (matchCabang && matchPrincipal && matchPIC) {
         card.style.display = "block";
       } else {
         card.style.display = "none";
@@ -403,9 +412,11 @@
 
   filterCabang.addEventListener("change", applyFilter);
   filterPrincipal.addEventListener("change", applyFilter);
+  filterPIC.addEventListener("change", applyFilter);
 </script>
 </body>
 </html>
+
 
 
 
