@@ -103,9 +103,10 @@
   </div>
   <div class="offcanvas-body">
 
-    <input type="text"
-           class="form-control form-control-sm mb-3"
-           placeholder="Search name...">
+   <input type="text"
+       id="mobileSidebarSearch"
+       class="form-control form-control-sm mb-3"
+       placeholder="Search name...">
 
     <ul class="nav flex-column">
     <li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC0Fjg52BemRabtg8iqzrD7AQ0HQCvODW8pKUZAffBJVGo?e=KLeNll/Dokumen WI/SOP" target="_blank">Dokumen WI/SOP</a></li>
@@ -141,9 +142,12 @@
     <!-- SIDEBAR -->
     <aside class="col-lg-2 col-md-3 sidebar p-3 d-none d-md-block">
   <h6 class="text-muted">DASHBOARD</h6>
+		
 	<input type="text"
-           class="form-control form-control-sm mb-3"
-           placeholder="Search name...">
+       id="sidebarSearch"
+       class="form-control form-control-sm mb-3"
+       placeholder="Search name...">
+
   <ul class="nav flex-column">
     <li>
       <a class="nav-link active"
@@ -443,9 +447,39 @@
   filterCabang.addEventListener("change", applyFilter);
   filterPrincipal.addEventListener("change", applyFilter);
   filterPIC.addEventListener("change", applyFilter);
+
+	 // ===== SIDEBAR SEARCH (DESKTOP) =====
+  const sidebarSearch = document.getElementById("sidebarSearch");
+  const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
+
+  sidebarSearch.addEventListener("keyup", function () {
+    const keyword = this.value.toLowerCase();
+
+    sidebarLinks.forEach(link => {
+      const text = link.textContent.toLowerCase();
+      link.parentElement.style.display =
+        text.includes(keyword) ? "block" : "none";
+    });
+  });
+
+  // ===== SIDEBAR SEARCH (MOBILE / OFFCANVAS) =====
+  const mobileSearch = document.getElementById("mobileSidebarSearch");
+  const mobileLinks = document.querySelectorAll("#mobileSidebar .nav-link");
+
+  mobileSearch.addEventListener("keyup", function () {
+    const keyword = this.value.toLowerCase();
+
+    mobileLinks.forEach(link => {
+      const text = link.textContent.toLowerCase();
+      link.parentElement.style.display =
+        text.includes(keyword) ? "block" : "none";
+    });
+  });
+	
 </script>
 </body>
 </html>
+
 
 
 
