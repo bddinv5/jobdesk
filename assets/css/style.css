@@ -10,92 +10,79 @@ html, body {
 body {
   margin: 0;
   background: #f8f9fa;
-  overflow: hidden; /* BODY TIDAK SCROLL */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow: hidden; /* body TIDAK scroll */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: #1f2937;
 }
 
 /* ================= NAVBAR ================= */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   height: 56px;
   background: #1f2937;
   box-shadow: 0 2px 6px rgba(0,0,0,.15);
-  z-index: 1100;
+  z-index: 1030;
 }
 
 /* ================= DASHBOARD WRAPPER ================= */
 .dashboard-wrapper {
   position: fixed;
-  top: 56px;
+  top: 56px;      /* tepat di bawah navbar */
   left: 0;
   right: 0;
   bottom: 0;
   overflow: hidden;
 }
 
-/* Bootstrap FIX */
+/* Bootstrap FIX (hilangkan space bawaan) */
 .dashboard-wrapper .container-fluid,
 .dashboard-wrapper .row {
   height: 100%;
-  margin: 0;        /* 🔴 FIX SPACE BOOTSTRAP */
+  margin: 0;
 }
 
 /* ================= SIDEBAR ================= */
 .sidebar {
   height: 100%;
-  width: 260px;
   overflow-y: auto;
-  background: #ffffff;
+  background: #fff;
   border-right: 1px solid #dee2e6;
-  padding: 12px;    /* 🔽 dari 16px */
+  padding: 12px; /* 🔽 dari 16px */
 }
 
 /* ================= MAIN CONTENT ================= */
 .main-content {
   height: 100%;
   overflow-y: auto;
-  padding: 12px 20px; /* 🔽 FIX JARAK ATAS & BAWAH */
+  padding: 12px 20px; /* 🔽 dari 24px */
 }
 
-/* ================= PAGE HEADER ================= */
+/* ================= HEADER ================= */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 10px; /* 🔽 */
+  gap: 10px;          /* 🔽 */
+  margin-bottom: 12px; /* 🔽 dari 24px */
   flex-wrap: wrap;
 }
 
 .page-title {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 8px; /* 🔽 */
 }
 
 .page-title img {
-  width: 38px;
+  width: 38px; /* 🔽 */
   height: 38px;
-}
-
-/* ================= FILTER ================= */
-.filter-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  margin-bottom: 12px; /* 🔽 */
 }
 
 /* ================= CARD ================= */
 .analyst-card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 14px;
   padding: 20px;        /* 🔽 dari 24px */
-  margin-bottom: 16px; /* 🔥 INI KUNCI */
+  margin-bottom: 16px; /* 🔥 KUNCI: jarak antar card */
   box-shadow: 0 8px 18px rgba(0,0,0,.08);
 }
 
@@ -103,48 +90,18 @@ body {
 .analyst-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 12px;          /* 🔽 */
   margin-bottom: 8px; /* 🔽 */
 }
 
 .analyst-header img {
-  width: 48px;
+  width: 48px; /* 🔽 */
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-/* ================= JOBDESK GRID ================= */
-.jobdesk-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;       /* 🔽 dari 24px */
-  margin-top: 8px;/* 🔽 */
-}
-
-.jobdesk-grid h6 {
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.jobdesk-grid ul {
-  padding-left: 16px;
-  margin: 0;
-}
-
-.jobdesk-grid li {
-  margin-bottom: 4px; /* 🔽 */
-  font-size: 14px;
-  line-height: 1.45;
-}
-
 /* ================= RESPONSIVE ================= */
-@media (max-width: 1200px) {
-  .jobdesk-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
 @media (max-width: 768px) {
   .sidebar {
     display: none;
@@ -152,9 +109,5 @@ body {
 
   .main-content {
     padding: 12px;
-  }
-
-  .jobdesk-grid {
-    grid-template-columns: 1fr;
   }
 }
