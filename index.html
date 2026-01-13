@@ -98,28 +98,27 @@
 <body>
 
 <!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-dark px-3 fixed-top">
+<nav class="navbar navbar-dark fixed-top px-3 d-flex justify-content-between">
   <div class="d-flex align-items-center gap-2">
     <button class="btn btn-outline-light btn-sm d-md-none"
             data-bs-toggle="offcanvas"
             data-bs-target="#mobileSidebar">
-      ☰
-    </button>
-    <span class="navbar-brand fw-semibold mb-0">
+		☰
+	</button>
+    <span class="navbar-brand fw-bold mb-0">
       Supply Chain Data Analyst Dashboard
     </span>
   </div>
-
   <span class="text-light small d-none d-md-block">
     Inventory | Warehouse | Logistics
   </span>
 </nav>
 	
 <!-- ================= OFFCANVAS MOBILE ================= -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
+<<div class="offcanvas offcanvas-start" id="mobileSidebar">
   <div class="offcanvas-header">
     <h6 class="offcanvas-title">DASHBOARD</h6>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    <button class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body">
 
@@ -156,11 +155,12 @@
   </div>
 </div>
 	
-<div class="container-fluid dashboard-wrapper">
-  <div class="row h-100">
+<div class="dashboard-wrapper">
+  <div class="container-fluid h-100">
+    <div class="row dashboard-row">
 
     <!-- SIDEBAR -->
-<aside class="col-lg-2 col-md-3 sidebar p-3 d-none d-md-block">
+ <aside class="col-md-3 col-lg-2 sidebar d-none d-md-block">
   <h6 class="text-muted">DASHBOARD</h6>
 		
 	<input type="text"
@@ -203,7 +203,7 @@
 </aside>
 
     <!-- CONTENT -->
-    <main class="col-lg-10 col-md-9 p-4">
+   <main class="col-md-9 col-lg-10 main-content">
 
       <!-- HEADER + DOWNLOAD -->
       <div class="page-header">
@@ -427,6 +427,7 @@
       </footer>
 
     </main>
+  	</div>
   </div>
 </div>
 
@@ -499,4 +500,5 @@
 </script>
 </body>
 </html>
+
 
