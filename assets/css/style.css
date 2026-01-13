@@ -19,6 +19,7 @@ body {
 .navbar {
   background: linear-gradient(90deg, #0f172a, #1f2937);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  height: 56px;
 }
 
 /* LOGO */
@@ -48,21 +49,22 @@ body {
 }
 
 /* =====================================================
-   SIDEBAR
+   SIDEBAR (FIXED & SCROLLABLE - FINAL)
 ===================================================== */
 .sidebar {
+  position: fixed;
+  top: 56px; /* tinggi navbar */
+  left: 0;
+  width: 260px;
+  height: calc(100vh - 56px);
   background: linear-gradient(180deg, #ffffff, #f8fafc);
-  height: 100vh;
   border-right: 1px solid #e5e7eb;
-  position: sticky;
-  top: 0;
-
-  /* ===== FIX AGAR BISA SCROLL ===== */
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 1000;
 }
 
-/* Scrollbar Sidebar (Optional tapi direkomendasikan) */
+/* Scrollbar Sidebar */
 .sidebar::-webkit-scrollbar {
   width: 6px;
 }
@@ -88,6 +90,7 @@ body {
   text-decoration: none;
   font-size: 14px;
   transition: all 0.25s ease;
+  display: block;
 }
 
 .sidebar .nav-link:hover {
@@ -101,6 +104,15 @@ body {
   color: #ffffff;
   font-weight: 600;
   box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+/* =====================================================
+   MAIN CONTENT (GESER DARI SIDEBAR)
+===================================================== */
+.main-content {
+  margin-left: 260px;
+  padding: 24px;
+  padding-top: calc(24px + 56px);
 }
 
 /* =====================================================
@@ -207,6 +219,20 @@ footer small {
    RESPONSIVE - MOBILE
 ===================================================== */
 @media (max-width: 768px) {
+  .sidebar {
+    left: -260px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding-top: calc(24px + 56px);
+  }
+
   .page-header {
     flex-direction: column;
     align-items: flex-start;
