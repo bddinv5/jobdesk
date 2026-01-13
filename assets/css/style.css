@@ -22,17 +22,17 @@ body {
   z-index: 1030;
 }
 
-/* ================= WRAPPER ================= */
+/* ================= DASHBOARD WRAPPER ================= */
 .dashboard-wrapper {
   position: fixed;
-  top: 56px;        /* tepat di bawah navbar */
+  top: 56px;      /* GANTI margin-top */
   left: 0;
   right: 0;
   bottom: 0;
   overflow: hidden;
 }
 
-/* ================= BOOTSTRAP FIX ================= */
+/* Bootstrap FIX */
 .dashboard-wrapper .container-fluid,
 .dashboard-wrapper .row {
   height: 100%;
@@ -41,7 +41,7 @@ body {
 /* ================= SIDEBAR ================= */
 .sidebar {
   height: 100%;
-  overflow-y: auto;      /* ✅ SIDEBAR SCROLL */
+  overflow-y: auto;  /* ✅ SCROLL KIRI */
   background: #fff;
   border-right: 1px solid #dee2e6;
   padding: 16px;
@@ -50,7 +50,7 @@ body {
 /* ================= MAIN CONTENT ================= */
 .main-content {
   height: 100%;
-  overflow-y: auto;      /* ✅ KONTEN SCROLL */
+  overflow-y: auto;  /* ✅ SCROLL KANAN */
   padding: 24px;
 }
 
