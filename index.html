@@ -17,6 +17,7 @@
     body {
       background: #f8f9fa;
       margin: 0;
+      overflow: hidden; /* FIX SCROLL */
     }
 
     /* NAVBAR */
@@ -24,20 +25,72 @@
       background: #1f2937;
       height: 56px;
       box-shadow: 0 2px 6px rgba(0,0,0,.15);
+      z-index: 1030;
     }
 
-    .navbar-brand {
-      font-size: 1rem;
-      white-space: nowrap;
+    /* ===== MAIN WRAPPER ===== */
+    .dashboard-wrapper {
+      margin-top: 56px;
+      height: calc(100vh - 56px);
+      overflow: hidden;
     }
 
-    /* OFFCANVAS BUTTON */
-    .navbar .btn {
-      border-color: rgba(255,255,255,.5);
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      height: 100%;
+      overflow-y: auto;
+      border-right: 1px solid #dee2e6;
+      background: #fff;
     }
 
-    .navbar .btn:hover {
-      background: rgba(255,255,255,.15);
+    /* ===== CONTENT ===== */
+    main {
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    /* HEADER */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .page-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .page-title img {
+      width: 42px;
+      height: 42px;
+    }
+
+    /* CARD */
+    .analyst-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08);
+    }
+
+    .analyst-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .analyst-header img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -446,3 +499,4 @@
 </script>
 </body>
 </html>
+
