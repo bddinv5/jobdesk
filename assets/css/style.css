@@ -56,6 +56,28 @@ body {
   border-right: 1px solid #e5e7eb;
   position: sticky;
   top: 0;
+
+  /* ===== FIX AGAR BISA SCROLL ===== */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Scrollbar Sidebar (Optional tapi direkomendasikan) */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #c7cbd1;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
 }
 
 .sidebar .nav-link {
