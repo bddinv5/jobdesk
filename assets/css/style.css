@@ -1,6 +1,4 @@
-/* =====================================================
-   RESET
-===================================================== */
+/* ================= RESET ================= */
 * {
   box-sizing: border-box;
 }
@@ -11,284 +9,98 @@ html, body {
 
 body {
   margin: 0;
-  background: linear-gradient(135deg, #eef2f7, #f8fafc);
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  color: #1f2937;
-  overflow: auto; /* WAJIB agar scroll aman */
+  background: #f8f9fa;
+  overflow: hidden; /* body TIDAK scroll */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* =====================================================
-   NAVBAR (FIXED)
-===================================================== */
+/* ================= NAVBAR ================= */
 .navbar {
+  height: 56px;
+  background: #1f2937;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  z-index: 1030;
+}
+
+/* ================= WRAPPER ================= */
+.dashboard-wrapper {
   position: fixed;
-  top: 0;
+  top: 56px;        /* tepat di bawah navbar */
   left: 0;
   right: 0;
-  height: 56px;
-  background: linear-gradient(90deg, #0f172a, #1f2937);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-  z-index: 1100;
-}
-
-.logo {
-  height: 40px;
-}
-
-/* =====================================================
-   LAYOUT WRAPPER
-===================================================== */
-.layout,
-.dashboard-layout {
-  display: flex;
-  margin-top: 56px; /* tinggi navbar */
-  height: calc(100vh - 56px);
+  bottom: 0;
   overflow: hidden;
 }
 
-/* =====================================================
-   SIDEBAR
-===================================================== */
-.sidebar {
-  width: 260px;
+/* ================= BOOTSTRAP FIX ================= */
+.dashboard-wrapper .container-fluid,
+.dashboard-wrapper .row {
   height: 100%;
-  flex-shrink: 0;
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  height: 100%;
+  overflow-y: auto;      /* ✅ SIDEBAR SCROLL */
+  background: #fff;
   border-right: 1px solid #dee2e6;
   padding: 16px;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
-/* Scrollbar Sidebar */
-.sidebar::-webkit-scrollbar {
-  width: 6px;
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background: #c7cbd1;
-  border-radius: 10px;
-}
-.sidebar::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
-}
-
-/* Sidebar menu */
-.sidebar .nav-link {
-  display: block;
-  padding: 10px 14px;
-  margin-bottom: 6px;
-  border-radius: 12px;
-  color: #374151;
-  font-size: 14px;
-  text-decoration: none;
-  transition: all 0.25s ease;
-}
-
-.sidebar .nav-link:hover {
-  background: #eef2ff;
-  color: #1d4ed8;
-  transform: translateX(4px);
-}
-
-.sidebar .nav-link.active {
-  background: linear-gradient(90deg, #2563eb, #1d4ed8);
-  color: #ffffff;
-  font-weight: 600;
-  box-shadow: 0 6px 16px rgba(37,99,235,0.4);
-}
-
-/* =====================================================
-   MAIN CONTENT
-===================================================== */
+/* ================= MAIN CONTENT ================= */
 .main-content {
-  flex: 1;
   height: 100%;
-  overflow-y: auto;
-  padding: 24px 28px;
+  overflow-y: auto;      /* ✅ KONTEN SCROLL */
+  padding: 24px;
 }
 
-/* =====================================================
-   PAGE HEADER
-===================================================== */
+/* ================= HEADER ================= */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-}
-
-/* =====================================================
-   FILTER
-===================================================== */
-.filter-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
-/* =====================================================
-   CARD / JOBDESK
-===================================================== */
-.analyst-card,
-.jobdesk-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 24px 26px;
-  margin-bottom: 32px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-  transition: all 0.25s ease;
-}
-
-.analyst-card:hover,
-.jobdesk-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.14);
-}
-
-/* Border per analyst */
-.alya { border-left: 6px solid #2563eb; }
-.fincha { border-left: 6px solid #10b981; }
-.hafiz { border-left: 6px solid #f97316; }
-.irvan { border-left: 6px solid #8b5cf6; }
-.liyana { border-left: 6px solid #22c55e; }
-.samsudin { border-left: 6px solid #ef4444; }
-
-/* =====================================================
-   HEADER CARD
-===================================================== */
-.analyst-header,
-.jobdesk-header {
+.page-title {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 12px;
 }
 
-.analyst-header img,
-.jobdesk-header img {
+.page-title img {
+  width: 42px;
+  height: 42px;
+}
+
+/* ================= CARD ================= */
+.analyst-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.analyst-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.analyst-header img {
   width: 52px;
   height: 52px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #dee2e6;
 }
 
-.jobdesk-header h5 {
-  margin: 0;
-  font-weight: 700;
-}
-
-/* =====================================================
-   BADGE
-===================================================== */
-.badge-custom {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  margin-right: 6px;
-}
-
-/* =====================================================
-   JOBDESK GRID
-===================================================== */
-.jobdesk-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 20px;
-}
-
-.jobdesk-grid h6 {
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.jobdesk-grid ul {
-  padding-left: 18px;
-  margin: 0;
-}
-
-.jobdesk-grid li {
-  margin-bottom: 6px;
-  line-height: 1.5;
-}
-
-/* =====================================================
-   TYPOGRAPHY
-===================================================== */
-h4 {
-  font-weight: 700;
-  margin-bottom: 14px;
-}
-
-h6 {
-  font-weight: 600;
-  font-size: 14px;
-}
-
-li {
-  font-size: 14px;
-}
-
-/* =====================================================
-   BUTTON
-===================================================== */
-.btn {
-  transition: all 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
-}
-
-/* =====================================================
-   FOOTER
-===================================================== */
-footer small {
-  color: #9ca3af;
-}
-
-/* =====================================================
-   RESPONSIVE
-===================================================== */
-@media (max-width: 1200px) {
-  .jobdesk-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  .layout,
-  .dashboard-layout {
-    flex-direction: column;
-  }
-
   .sidebar {
     display: none;
-  }
-
-  .main-content {
-    padding: 16px;
-    height: auto;
-  }
-
-  .jobdesk-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .page-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .analyst-header,
-  .jobdesk-header {
-    flex-direction: column;
-    text-align: center;
   }
 }
