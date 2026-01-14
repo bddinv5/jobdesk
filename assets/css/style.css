@@ -6,13 +6,13 @@
 html,
 body {
   height: 100%;
+  margin: 0;
 }
 
 /* ================= BODY ================= */
 body {
   background: #f8f9fa;
-  margin: 0;
-  overflow: hidden; /* body tidak scroll */
+  overflow: hidden; /* body TIDAK scroll */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #1f2937;
 }
@@ -38,30 +38,32 @@ body {
   overflow: hidden;
 }
 
-/* ================= BOOTSTRAP RESET ================= */
+/* ================= CONTAINER ================= */
 .container,
 .container-fluid {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  flex: 1;              /* 🔥 PALING PENTING */
+  display: flex;        /* 🔥 PALING PENTING */
+  padding: 0 !important;
+  min-height: 0;        /* 🔥 KUNCI SCROLL */
 }
 
-/* ROW JADI FLEX (JANGAN PAKAI HEIGHT 100%) */
+/* ================= ROW ================= */
 .row {
   flex: 1;
   display: flex;
   margin: 0 !important;
-  min-height: 0; /* 🔥 KUNCI SCROLL */
+  min-height: 0;        /* 🔥 KUNCI SCROLL */
 }
 
 /* ================= SIDEBAR ================= */
 .sidebar {
-  width: 260px; /* optional, stabil */
+  width: 260px;
   background: #ffffff;
   border-right: 1px solid #dee2e6;
   padding: 12px;
 
   overflow-y: auto;
-  min-height: 0; /* 🔥 KUNCI SCROLL */
+  min-height: 0;        /* 🔥 KUNCI SCROLL */
 }
 
 /* ================= MAIN CONTENT ================= */
@@ -70,7 +72,7 @@ body {
   padding: 14px 20px;
 
   overflow-y: auto;
-  min-height: 0; /* 🔥 KUNCI SCROLL */
+  min-height: 0;        /* 🔥 KUNCI SCROLL */
 }
 
 /* ================= PAGE HEADER ================= */
@@ -92,7 +94,6 @@ body {
 .page-title img {
   width: 36px;
   height: 36px;
-  object-fit: contain;
 }
 
 /* ================= CARD ================= */
