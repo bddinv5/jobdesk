@@ -28,40 +28,49 @@ body {
 /* ================= DASHBOARD WRAPPER ================= */
 .dashboard-wrapper {
   position: fixed;
-  top: 56px;            /* tepat di bawah navbar */
+  top: 56px;
   left: 0;
   right: 0;
   bottom: 0;
+
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
 
-/* ================= BOOTSTRAP HARD RESET ================= */
+/* ================= BOOTSTRAP RESET ================= */
 .container,
 .container-fluid {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 
+/* ROW JADI FLEX (JANGAN PAKAI HEIGHT 100%) */
 .row {
-  height: 100%;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  flex: 1;
+  display: flex;
+  margin: 0 !important;
+  min-height: 0; /* 🔥 KUNCI SCROLL */
 }
 
 /* ================= SIDEBAR ================= */
 .sidebar {
-  height: 100%;
-  overflow-y: auto;
+  width: 260px; /* optional, stabil */
   background: #ffffff;
   border-right: 1px solid #dee2e6;
   padding: 12px;
+
+  overflow-y: auto;
+  min-height: 0; /* 🔥 KUNCI SCROLL */
 }
 
 /* ================= MAIN CONTENT ================= */
 .main-content {
-  height: 100%;
-  overflow-y: auto;
+  flex: 1;
   padding: 14px 20px;
+
+  overflow-y: auto;
+  min-height: 0; /* 🔥 KUNCI SCROLL */
 }
 
 /* ================= PAGE HEADER ================= */
@@ -110,7 +119,7 @@ body {
   object-fit: cover;
 }
 
-/* ================= SCROLLBAR (OPTIONAL, CLEAN) ================= */
+/* ================= SCROLLBAR ================= */
 .sidebar::-webkit-scrollbar,
 .main-content::-webkit-scrollbar {
   width: 6px;
