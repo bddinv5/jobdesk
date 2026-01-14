@@ -27,7 +27,7 @@ body {
 /* ================= DASHBOARD WRAPPER ================= */
 .dashboard-wrapper {
   position: fixed;
-  top: 56px;       /* PAS DI BAWAH NAVBAR */
+  top: 56px;          /* TEPAT di bawah navbar */
   left: 0;
   right: 0;
   bottom: 0;
@@ -125,3 +125,4 @@ body {
     padding: 12px;
   }
 }
+
