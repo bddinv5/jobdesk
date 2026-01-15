@@ -2,13 +2,17 @@
 * {
   box-sizing: border-box;
 }
-
 html, body {
   height: 100%;
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ================= BODY ================= */
+body {
   background: #f8f9fa;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #1f2937;
+  overflow: hidden; /* body TIDAK SCROLL */
 }
 
 /* ================= NAVBAR ================= */
@@ -21,42 +25,40 @@ html, body {
 
 /* ================= DASHBOARD WRAPPER ================= */
 .dashboard-wrapper {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  top: 56px; /* tepat di bawah navbar */
+  display: flex; /* FLEX supaya sidebar + main-content sejajar */
+  position: fixed;
+  top: 56px; /* di bawah navbar */
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
+  overflow: hidden; /* scroll di child, bukan wrapper */
 }
 
 /* ================= SIDEBAR ================= */
 .sidebar {
-  width: 260px; /* lebar sidebar tetap */
+  width: 250px; /* lebar sidebar */
   background: #fff;
   border-right: 1px solid #dee2e6;
   padding: 12px;
-  overflow-y: auto; /* scroll sendiri */
-  flex-shrink: 0;
+  overflow-y: auto; /* scroll sidebar hidup */
+  flex-shrink: 0; /* jangan mengecil */
 }
 
 /* ================= MAIN CONTENT ================= */
 .main-content {
-  flex-grow: 1; /* ambil sisa space */
+  flex-grow: 1;
+  background: #f8f9fa;
   padding: 16px 20px;
-  overflow-y: auto; /* scroll utama */
-  min-height: 0; /* penting agar flex scroll bekerja */
+  overflow-y: auto; /* scroll aktif */
 }
 
 /* ================= FILTER BAR ================= */
 .filter-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 12px;
-  flex-wrap: wrap;
 }
-
 .filter-bar select {
   max-width: 240px;
 }
@@ -70,13 +72,11 @@ html, body {
   margin-bottom: 12px;
   flex-wrap: wrap;
 }
-
 .page-title {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .page-title img {
   width: 36px;
   height: 36px;
@@ -91,14 +91,6 @@ html, body {
   box-shadow: 0 6px 14px rgba(0,0,0,.08);
 }
 
-.analyst-card .row > div {
-  margin-bottom: 16px;
-}
-
-.analyst-card ul {
-  padding-left: 18px;
-}
-
 /* ================= ANALYST HEADER ================= */
 .analyst-header {
   display: flex;
@@ -106,7 +98,6 @@ html, body {
   gap: 10px;
   margin-bottom: 6px;
 }
-
 .analyst-header img {
   width: 46px;
   height: 46px;
@@ -119,7 +110,6 @@ html, body {
 .main-content::-webkit-scrollbar {
   width: 6px;
 }
-
 .sidebar::-webkit-scrollbar-thumb,
 .main-content::-webkit-scrollbar-thumb {
   background: rgba(0,0,0,.2);
@@ -128,28 +118,10 @@ html, body {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
-  .dashboard-wrapper {
-    flex-direction: column; /* sidebar jadi atas/bawah */
-    top: 56px;
-  }
-
   .sidebar {
-    width: 100%;
-    height: auto;
-    display: none; /* bisa toggle dengan JS */
-    border-right: none;
-    border-bottom: 1px solid #dee2e6;
+    display: none;
   }
-
   .main-content {
     padding: 12px;
-  }
-
-  .page-header {
-    margin-bottom: 16px;
-  }
-
-  .filter-bar {
-    margin-bottom: 20px;
   }
 }
