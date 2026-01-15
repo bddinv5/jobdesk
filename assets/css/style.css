@@ -1,122 +1,142 @@
-/* ================= RESET ================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* =====================================================
+   GLOBAL
+===================================================== */
+html {
+  scroll-behavior: smooth;
 }
 
-html, body {
-  height: 100%;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f8f9fa;
-  overflow-x: hidden;
+body {
+  background: linear-gradient(135deg, #eef2f7, #f8fafc);
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: #1f2937;
 }
 
-/* ================= NAVBAR ================= */
+/* =====================================================
+   NAVBAR
+===================================================== */
 .navbar {
-  height: 56px;
-  background: #1f2937;
-  z-index: 1030;
+  background: linear-gradient(90deg, #0f172a, #1f2937);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
 }
 
-/* ================= DASHBOARD WRAPPER ================= */
-.dashboard-wrapper {
-  display: flex;
-  padding-top: 56px; /* navbar height */
-  height: calc(100vh - 56px);
-  overflow: hidden;
-}
-
-/* ================= SIDEBAR ================= */
-.sidebar {
-  width: 260px;
-  background: #fff;
-  border-right: 1px solid #ddd;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  padding-bottom: 1rem;
-}
-
-.sidebar-links .nav-link {
-  font-size: 0.875rem;
-  padding: 0.35rem 0;
-}
-
-.sidebar input {
-  margin-bottom: 0.5rem;
-}
-
-/* ================= MAIN CONTENT ================= */
-.main-content {
-  flex-grow: 1;
-  overflow-y: auto;
-  padding: 1rem 1rem 2rem 1rem;
-}
-
-.page-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-}
-
+/* LOGO */
 .logo {
-  width: 40px;
   height: 40px;
-  object-fit: cover;
+  width: auto;
 }
 
-/* ================= FILTER ================= */
-.filter-bar {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+/* =====================================================
+   SIDEBAR
+===================================================== */
+.sidebar {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  height: 100vh;
+  border-right: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
 }
 
-/* ================= ANALYST CARD ================= */
+.sidebar .nav-link {
+  color: #374151;
+  margin-bottom: 6px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.sidebar .nav-link:hover {
+  background: #eef2ff;
+  color: #1d4ed8;
+  transform: translateX(4px);
+}
+
+.sidebar .nav-link.active {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(37,99,235,0.4);
+}
+
+/* =====================================================
+   CARD
+===================================================== */
 .analyst-card {
-  background: #fff;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  background: #ffffff;
+  padding: 26px;
+  margin-bottom: 32px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
 }
 
-.analyst-header img.analyst-img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
+.analyst-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.14);
 }
 
-.analyst-header h4 {
-  font-size: 1rem;
-  margin: 0;
+/* Border per analyst */
+.alya { border-left: 6px solid #2563eb; }
+.fincha { border-left: 6px solid #10b981; }
+.hafiz { border-left: 6px solid #f97316; }
+.irvan { border-left: 6px solid #8b5cf6; }
+.liyana { border-left: 6px solid #22c55e; }
+.samsudin { border-left: 6px solid #ef4444; }
+
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+h4 {
+  font-weight: 700;
+  margin-bottom: 14px;
 }
 
-.analyst-card h6 {
-  font-size: 0.875rem;
-  margin-bottom: 0.25rem;
+h6 {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
 }
 
-.analyst-card ul {
-  padding-left: 1rem;
-  margin-bottom: 0;
+ul {
+  padding-left: 18px;
 }
 
-.analyst-card .badge {
-  margin-right: 0.25rem;
-  margin-bottom: 0.25rem;
+li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #374151;
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-  .sidebar {
-    display: none;
-  }
-  .main-content {
-    padding: 1rem;
-  }
+/* =====================================================
+   BUTTON
+===================================================== */
+.btn-sm {
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+/* =====================================================
+   HERO IMAGE (OPSIONAL)
+===================================================== */
+img.hero {
+  border-radius: 22px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+  margin-bottom: 24px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+footer small {
+  color: #9ca3af;
 }
