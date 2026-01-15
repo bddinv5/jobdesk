@@ -1,154 +1,142 @@
-/* ================= RESET ================= */
-* {
-  box-sizing: border-box;
+/* =====================================================
+   GLOBAL
+===================================================== */
+html {
+  scroll-behavior: smooth;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f8f9fa;
+body {
+  background: linear-gradient(135deg, #eef2f7, #f8fafc);
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
   color: #1f2937;
-  overflow: hidden; /* body sendiri tidak scroll */
 }
 
-/* ================= NAVBAR ================= */
+/* =====================================================
+   NAVBAR
+===================================================== */
 .navbar {
-  height: 56px;
-  background: #1f2937;
-  box-shadow: 0 2px 6px rgba(0,0,0,.15);
-  z-index: 1030;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
+  background: linear-gradient(90deg, #0f172a, #1f2937);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
 }
 
-/* ================= DASHBOARD WRAPPER ================= */
-.dashboard-wrapper {
-  display: flex;
-  height: calc(100vh - 56px); /* full height minus navbar */
-  overflow: hidden;           /* scroll di sidebar/main-content */
-}
-
-/* ================= SIDEBAR ================= */
-.sidebar {
-  flex: 0 0 240px;        /* lebar sidebar tetap */
-  height: 100%;
-  overflow-y: auto;       /* scroll vertical hidup */
-  background: #fff;
-  border-right: 1px solid #dee2e6;
-  padding: 12px;
-}
-
-/* ================= MAIN CONTENT ================= */
-.main-content {
-  flex: 1 1 auto;         /* mengisi sisa ruang */
-  height: 100%;
-  overflow-y: auto;       /* scroll vertical aktif */
-  padding: 16px 24px;
-  min-width: 0;           /* wajib untuk flex wrap */
-}
-
-/* ================= HEADER ================= */
-.page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
-}
-
-.page-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.page-title img {
-  width: 36px;
-  height: 36px;
-}
-
-/* ================= FILTER BAR ================= */
-.filter-bar {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-
-.filter-bar select {
-  max-width: 200px;
-  font-size: 0.875rem;
-  padding: 2px 6px;
-}
-
-/* ================= CARD ================= */
-.analyst-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 6px 14px rgba(0,0,0,.08);
-}
-
-/* ================= ANALYST HEADER ================= */
-.analyst-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-.analyst-header img {
-  width: 40px;
+/* LOGO */
+.logo {
   height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: auto;
 }
 
-/* ================= BADGES ================= */
-.analyst-card .badge {
-  margin-right: 4px;
-  margin-bottom: 4px;
-  font-size: 0.75rem;
-  padding: 0.25em 0.5em;
+/* =====================================================
+   SIDEBAR
+===================================================== */
+.sidebar {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  height: 100vh;
+  border-right: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
 }
 
-/* ================= ROW & COL ================= */
-.row {
-  margin: 0 -4px;
+.sidebar .nav-link {
+  color: #374151;
+  margin-bottom: 6px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.25s ease;
 }
 
-.row > [class*="col-"] {
-  padding: 0 4px;
-  margin-bottom: 8px;
+.sidebar .nav-link:hover {
+  background: #eef2ff;
+  color: #1d4ed8;
+  transform: translateX(4px);
 }
 
-/* ================= SCROLLBAR ================= */
-.sidebar::-webkit-scrollbar,
-.main-content::-webkit-scrollbar {
-  width: 6px;
+.sidebar .nav-link.active {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(37,99,235,0.4);
 }
 
-.sidebar::-webkit-scrollbar-thumb,
-.main-content::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,.2);
-  border-radius: 4px;
+/* =====================================================
+   CARD
+===================================================== */
+.analyst-card {
+  background: #ffffff;
+  padding: 26px;
+  margin-bottom: 32px;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
 }
 
-/* ================= RESPONSIVE MOBILE ================= */
-@media (max-width: 768px) {
-  .dashboard-wrapper {
-    flex-direction: column;
-  }
+.analyst-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+}
 
-  .sidebar {
-    display: none;
-  }
+/* Border per analyst */
+.alya { border-left: 6px solid #2563eb; }
+.fincha { border-left: 6px solid #10b981; }
+.hafiz { border-left: 6px solid #f97316; }
+.irvan { border-left: 6px solid #8b5cf6; }
+.liyana { border-left: 6px solid #22c55e; }
+.samsudin { border-left: 6px solid #ef4444; }
 
-  .main-content {
-    padding: 12px;
-  }
+/* =====================================================
+   TYPOGRAPHY
+===================================================== */
+h4 {
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+h6 {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+ul {
+  padding-left: 18px;
+}
+
+li {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #374151;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+.btn-sm {
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.btn {
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+/* =====================================================
+   HERO IMAGE (OPSIONAL)
+===================================================== */
+img.hero {
+  border-radius: 22px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.14);
+  margin-bottom: 24px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+footer small {
+  color: #9ca3af;
 }
