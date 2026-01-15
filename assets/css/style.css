@@ -6,29 +6,9 @@
 html, body {
   height: 100%;
   margin: 0;
-}
-
- /* ================= FILTER BAR ================= */
-
-.filter-bar {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 12px; /* 🔥 JARAK AMAN */
-  flex-wrap: wrap;
-}
-
-.filter-bar select {
-  max-width: 240px;
-}
-
-
-
-/* ================= BODY ================= */
-body {
-  background: #f8f9fa;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f8f9fa;
   color: #1f2937;
-/*  overflow: hidden; */ /* BODY TIDAK SCROLL */
 }
 
 /* ================= NAVBAR ================= */
@@ -41,33 +21,44 @@ body {
 
 /* ================= DASHBOARD WRAPPER ================= */
 .dashboard-wrapper {
-  position: fixed;
-  top: 56px;          /* TEPAT di bawah navbar */
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 56px; /* tepat di bawah navbar */
   left: 0;
   right: 0;
   bottom: 0;
   overflow: hidden;
 }
 
-/* ================= BOOTSTRAP RESET ================= */
-.container-fluid {
-  height: 100%;
-}
-
 /* ================= SIDEBAR ================= */
 .sidebar {
-  height: 100%;
-  overflow-y: auto;
+  width: 260px; /* lebar sidebar tetap */
   background: #fff;
   border-right: 1px solid #dee2e6;
   padding: 12px;
+  overflow-y: auto; /* scroll sendiri */
+  flex-shrink: 0;
 }
 
 /* ================= MAIN CONTENT ================= */
 .main-content {
-  height: 100%;
-  overflow-y: auto; /* ✅ SCROLL HIDUP */
+  flex-grow: 1; /* ambil sisa space */
   padding: 16px 20px;
+  overflow-y: auto; /* scroll utama */
+  min-height: 0; /* penting agar flex scroll bekerja */
+}
+
+/* ================= FILTER BAR ================= */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-bar select {
+  max-width: 240px;
 }
 
 /* ================= HEADER ================= */
@@ -100,6 +91,14 @@ body {
   box-shadow: 0 6px 14px rgba(0,0,0,.08);
 }
 
+.analyst-card .row > div {
+  margin-bottom: 16px;
+}
+
+.analyst-card ul {
+  padding-left: 18px;
+}
+
 /* ================= ANALYST HEADER ================= */
 .analyst-header {
   display: flex;
@@ -129,69 +128,28 @@ body {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
+  .dashboard-wrapper {
+    flex-direction: column; /* sidebar jadi atas/bawah */
+    top: 56px;
+  }
+
   .sidebar {
-    display: none;
+    width: 100%;
+    height: auto;
+    display: none; /* bisa toggle dengan JS */
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
   }
 
   .main-content {
     padding: 12px;
   }
 
-/* ================= FIX HEIGHT & SCROLL ================= */
+  .page-header {
+    margin-bottom: 16px;
+  }
 
-/* pastikan root full height */
-html, body {
-  height: 100%;
+  .filter-bar {
+    margin-bottom: 20px;
+  }
 }
-
-/* dashboard area pas di bawah navbar */
-.dashboard-wrapper {
-  position: fixed;
-  top: 56px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
-}
-
-/* row jangan maksa h-100 */
-.dashboard-wrapper .row {
-  height: 100%;
-}
-
-/* sidebar scroll sendiri */
-.sidebar {
-  height: 100%;
-  overflow-y: auto;
-}
-
-/* main content scroll sendiri */
-.main-content {
-  height: 100%;
-  overflow-y: auto;
-}
-
-/* cegah header + filter nempel */
-.page-header {
-  margin-bottom: 16px;
-}
-
-.filter-bar {
-  margin-bottom: 20px;
-}
-
-/* rapikan kolom jobdesk */
-.analyst-card .row > div {
-  margin-bottom: 16px;
-}
-
-/* bullet list tidak terlalu mepet */
-.analyst-card ul {
-  padding-left: 18px;
-}
-
-}
-
-
-
-
