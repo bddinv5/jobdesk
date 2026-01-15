@@ -21,32 +21,33 @@ html, body {
 
 /* ================= DASHBOARD WRAPPER ================= */
 .dashboard-wrapper {
-  display: flex;
-  flex-direction: row;
+  display: flex;          /* sidebar + main-content sejajar */
   position: fixed;
-  top: 56px; /* tepat di bawah navbar */
+  top: 56px;              /* di bawah navbar */
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
+  overflow: hidden;       /* scroll hanya di child */
 }
 
 /* ================= SIDEBAR ================= */
 .sidebar {
-  flex: 0 0 220px; /* Lebar tetap */
+  flex: 0 0 240px;        /* lebar tetap */
   height: 100%;
-  overflow-y: auto;
-  border-right: 1px solid #dee2e6;
+  overflow-y: auto;       /* scroll hidup */
   background: #fff;
+  border-right: 1px solid #dee2e6;
   padding: 12px;
 }
 
 /* ================= MAIN CONTENT ================= */
 .main-content {
-  flex: 1;
+  flex: 1;                /* mengisi sisa ruang */
   height: 100%;
-  overflow-y: auto;
-  padding: 16px;
+  overflow-y: auto;       /* scroll vertical */
+  padding: 16px 24px;     /* padding agar tidak menempel sidebar */
+  margin-left: 0;         /* pastikan tidak ada offset negatif */
+  min-width: 0;           /* penting agar flex child wrap tidak overflow */
 }
 
 /* ================= HEADER ================= */
@@ -143,18 +144,8 @@ html, body {
   .sidebar {
     display: none;
   }
-
   .main-content {
     padding: 12px;
   }
-
-  .filter-bar select {
-    max-width: 100%;
-    font-size: 0.875rem;
-  }
-
-  .analyst-header img {
-    width: 36px;
-    height: 36px;
-  }
 }
+
