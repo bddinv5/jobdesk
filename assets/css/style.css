@@ -2,33 +2,17 @@
 * {
   box-sizing: border-box;
 }
-
 html, body {
   height: 100%;
   margin: 0;
 }
-
- /* ================= FILTER BAR ================= */
-
-.filter-bar {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 12px; /* 🔥 JARAK AMAN */
-  flex-wrap: wrap;
-}
-
-.filter-bar select {
-  max-width: 240px;
-}
-
-
 
 /* ================= BODY ================= */
 body {
   background: #f8f9fa;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: #1f2937;
-  overflow: hidden; /* BODY TIDAK SCROLL */
+  overflow: hidden; /* body tetap tidak scroll */
 }
 
 /* ================= NAVBAR ================= */
@@ -37,42 +21,48 @@ body {
   background: #1f2937;
   box-shadow: 0 2px 6px rgba(0,0,0,.15);
   z-index: 1030;
+  padding: 0 16px;
 }
 
 /* ================= DASHBOARD WRAPPER ================= */
 .dashboard-wrapper {
+  display: flex;           /* side-by-side layout */
   position: fixed;
-  top: 56px;          /* TEPAT di bawah navbar */
+  top: 56px;               /* di bawah navbar */
   left: 0;
   right: 0;
   bottom: 0;
-  overflow: hidden;
+  overflow: hidden;        /* scroll di child, bukan di wrapper */
 }
-
-/* ================= BOOTSTRAP RESET ================= */
-.container-fluid {
-  height: 100%;
-}
-
-.row {
-  margin: 0 !important;
-}
-
 
 /* ================= SIDEBAR ================= */
 .sidebar {
+  width: 240px;            /* lebar sidebar */
   height: 100%;
-  overflow-y: auto;
   background: #fff;
   border-right: 1px solid #dee2e6;
   padding: 12px;
+  overflow-y: auto;        /* scroll hidup */
+  flex-shrink: 0;
 }
 
 /* ================= MAIN CONTENT ================= */
 .main-content {
+  flex-grow: 1;
   height: 100%;
-  overflow-y: auto; /* ✅ SCROLL HIDUP */
+  overflow-y: auto;        /* scroll hidup */
   padding: 16px 20px;
+}
+
+/* ================= FILTER BAR ================= */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.filter-bar select {
+  max-width: 240px;
 }
 
 /* ================= HEADER ================= */
@@ -84,13 +74,11 @@ body {
   margin-bottom: 12px;
   flex-wrap: wrap;
 }
-
 .page-title {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .page-title img {
   width: 36px;
   height: 36px;
@@ -100,7 +88,7 @@ body {
 .analyst-card {
   background: #fff;
   border-radius: 14px;
-  padding: 16px;
+  padding: 14px;
   margin-bottom: 12px;
   box-shadow: 0 6px 14px rgba(0,0,0,.08);
 }
@@ -112,7 +100,6 @@ body {
   gap: 10px;
   margin-bottom: 6px;
 }
-
 .analyst-header img {
   width: 46px;
   height: 46px;
@@ -125,7 +112,6 @@ body {
 .main-content::-webkit-scrollbar {
   width: 6px;
 }
-
 .sidebar::-webkit-scrollbar-thumb,
 .main-content::-webkit-scrollbar-thumb {
   background: rgba(0,0,0,.2);
@@ -134,10 +120,12 @@ body {
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+  }
   .sidebar {
     display: none;
   }
-
   .main-content {
     padding: 12px;
   }
