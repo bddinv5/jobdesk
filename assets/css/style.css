@@ -1,142 +1,116 @@
-/* =====================================================
-   GLOBAL
-===================================================== */
-html {
-  scroll-behavior: smooth;
+/* ================= RESET ================= */
+* {
+  box-sizing: border-box;
 }
 
-body {
-  background: linear-gradient(135deg, #eef2f7, #f8fafc);
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
-  color: #1f2937;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-/* =====================================================
-   NAVBAR
-===================================================== */
+/* ================= NAVBAR ================= */
 .navbar {
-  background: linear-gradient(90deg, #0f172a, #1f2937);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  height: 56px;
+  background: #1f2937;
+  z-index: 1030;
 }
 
-/* LOGO */
-.logo {
-  height: 40px;
-  width: auto;
+/* ================= DASHBOARD WRAPPER ================= */
+.dashboard-wrapper {
+  display: flex;
+  height: calc(100vh - 56px); /* Tinggi penuh minus navbar */
+  overflow: hidden;
 }
 
-/* =====================================================
-   SIDEBAR
-===================================================== */
+/* ================= SIDEBAR ================= */
 .sidebar {
-  background: linear-gradient(180deg, #ffffff, #f8fafc);
-  height: 100vh;
-  border-right: 1px solid #e5e7eb;
-  position: sticky;
-  top: 0;
+  height: 100%;
+  overflow-y: auto;
+  border-right: 1px solid #dee2e6;
+  background: #fff;
+  padding: 16px;
 }
 
-.sidebar .nav-link {
-  color: #374151;
-  margin-bottom: 6px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: all 0.25s ease;
+/* ================= MAIN CONTENT ================= */
+.main-content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 24px;
 }
 
-.sidebar .nav-link:hover {
-  background: #eef2ff;
-  color: #1d4ed8;
-  transform: translateX(4px);
-}
-
-.sidebar .nav-link.active {
-  background: linear-gradient(90deg, #2563eb, #1d4ed8);
-  color: #ffffff;
-  font-weight: 600;
-  box-shadow: 0 6px 16px rgba(37,99,235,0.4);
-}
-
-/* =====================================================
-   CARD
-===================================================== */
+/* ================= CARDS ================= */
 .analyst-card {
-  background: #ffffff;
-  padding: 26px;
-  margin-bottom: 32px;
-  border-radius: 18px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-  transition: all 0.25s ease;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px; /* jarak antar card */
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
 }
 
-.analyst-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.14);
+.analyst-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
 }
 
-/* Border per analyst */
-.alya { border-left: 6px solid #2563eb; }
-.fincha { border-left: 6px solid #10b981; }
-.hafiz { border-left: 6px solid #f97316; }
-.irvan { border-left: 6px solid #8b5cf6; }
-.liyana { border-left: 6px solid #22c55e; }
-.samsudin { border-left: 6px solid #ef4444; }
-
-/* =====================================================
-   TYPOGRAPHY
-===================================================== */
-h4 {
-  font-weight: 700;
-  margin-bottom: 14px;
+.analyst-header img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-h6 {
-  font-weight: 600;
-  color: #1f2937;
-  font-size: 14px;
-}
-
-ul {
-  padding-left: 18px;
-}
-
-li {
-  font-size: 14px;
+/* ================= BADGES ================= */
+.badge {
+  margin-right: 6px;
   margin-bottom: 6px;
-  color: #374151;
 }
 
-/* =====================================================
-   BUTTON
-===================================================== */
-.btn-sm {
-  border-radius: 12px;
-  font-weight: 500;
+/* ================= FILTER BAR ================= */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
-.btn {
-  transition: all 0.2s ease;
+.filter-bar select {
+  max-width: 240px;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+/* ================= PAGE HEADER ================= */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
-/* =====================================================
-   HERO IMAGE (OPSIONAL)
-===================================================== */
-img.hero {
-  border-radius: 22px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.14);
-  margin-bottom: 24px;
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-/* =====================================================
-   FOOTER
-===================================================== */
-footer small {
-  color: #9ca3af;
+.page-title img {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+    height: auto;
+  }
+  .sidebar {
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #dee2e6;
+  }
 }
