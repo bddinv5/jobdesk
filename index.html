@@ -2,260 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Supply Chain Data Analyst Dashboard</title>
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body { background:#f8f9fa; }
+    .navbar { background:#1f2937; }
+    .sidebar { background:#ffffff; min-height:100vh; border-right:1px solid #dee2e6; }
+
+    .analyst-card {
+      background:#ffffff;
+      border-radius:10px;
+      padding:20px;
+      margin-bottom:20px;
+      box-shadow:0 2px 6px rgba(0,0,0,.05);
+    }
+
+    .analyst-header {
+      display:flex;
+      align-items:center;
+      gap:15px;
+      margin-bottom:10px;
+    }
+
+    .analyst-header img {
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid #dee2e6;
+    }
+
+    .page-header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:25px;
+    }
+
+    .page-title {
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .page-title img {
+      width:80px;
+    }
+
+    /* ===== RESPONSIVE MOBILE ===== */
+    @media (max-width: 768px) {
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .page-title img {
+        width: 50px;
+      }
+
+      .analyst-header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 	
 </head>
 
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-dark fixed-top px-3 d-flex justify-content-between">
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark px-3 d-flex justify-content-between">
   <div class="d-flex align-items-center gap-2">
-    <button class="btn btn-outline-light btn-sm d-md-none" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+    <button class="btn btn-outline-light btn-sm d-md-none"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileSidebar">
       ☰
     </button>
     <span class="navbar-brand fw-bold mb-0">
       Supply Chain Data Analyst Dashboard
     </span>
   </div>
+
   <span class="text-light small d-none d-md-block">
     Inventory | Warehouse | Logistics
   </span>
 </nav>
-
 	
-<!-- ================= OFFCANVAS MOBILE ================= -->
-<div class="offcanvas offcanvas-start" id="mobileSidebar">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
   <div class="offcanvas-header">
     <h6 class="offcanvas-title">DASHBOARD</h6>
-    <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
- <div class="offcanvas-body">
-    <input type="text" class="form-control form-control-sm mb-3" placeholder="Search name...">
-    <ul class="nav flex-column sidebar-links">
-      <li class="nav-item">
-        <a class="nav-link active"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgBxlLSkjBpjSY8JJPZi-VPhAXK65sf6kOpTxA1MLUhV3fc?e=Z8pvxe"
-           target="_blank" rel="noopener noreferrer">
-          OneDrive Share All
-        </a>
-      </li>
+  <div class="offcanvas-body">
 
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC0Fjg52BemRabtg8iqzrD7AQ0HQCvODW8pKUZAffBJVGo?e=KLeNll"
-           target="_blank" rel="noopener noreferrer">
-          Dokumen WI / SOP
-        </a>
-      </li>
+    <input type="text"
+           class="form-control form-control-sm mb-3"
+           placeholder="Search name...">
 
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://app.powerbi.com/groups/me/reports/0e1483b5-d50e-4127-90ba-117f6648b787/0c8770190c5dc5108e28?experience=power-bi"
-           target="_blank" rel="noopener noreferrer">
-          Dashboard Power BI All
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://app.powerbi.com/view?r=eyJrIjoiYjUyZTY5NzItOTk3ZC00MDk4LTgyMTItOWE0MTU3NjViZmI4IiwidCI6ImU0MDIwZTNkLTIzMWUtNDVmMS1iMDIzLWU0NjNiMWYwZjdmMiIsImMiOjEwfQ%3D%3D"
-           target="_blank" rel="noopener noreferrer">
-          Dashboard Power BI RBLM &amp; CBG
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://itsd.diamond.co.id/ITSD"
-           target="_blank" rel="noopener noreferrer">
-          ITSD Request
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://elearning.diamond.co.id/moodle/elearning"
-           target="_blank" rel="noopener noreferrer">
-          Elearning Training
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgALbx2XVNvNSJdW3iUglOU2ARUewFlAnKxEoDx3Pu4qiIg?e=OJFyjZ"
-           target="_blank" rel="noopener noreferrer">
-          Pendataan Disposal CBG
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgD3Dgu0WMX6TI7aZQMN5uxgAThNhCzpA7n5syAkHOjd8Yk?e=3koCjG"
-           target="_blank" rel="noopener noreferrer">
-          Pendataan Disposal BDD
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgA3NeXYRoOZQLZAyQ4hi0lCARqUf85DK0NoK76me505tZg?e=82XMlq"
-           target="_blank" rel="noopener noreferrer">
-          Disposal Principal
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgBP2e5H4t17T42dAZjcoA96AXgUkVi74o7uQNyikXMlGCM?e=A1g9xA"
-           target="_blank" rel="noopener noreferrer">
-          Disposal Non Principal
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:x:/r/personal/bdd_inventory5_diamond_co_id/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B433a90f9-1e6e-4528-bd16-fecf86325a2b%7D"
-           target="_blank" rel="noopener noreferrer">
-          Rekap Pendataan Principal
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:x:/r/personal/sophian_diamond_co_id/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B8fb913b3-788b-47d7-bf0c-7ece77baaf8c%7D"
-           target="_blank" rel="noopener noreferrer">
-          Rekap Batch
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:x:/g/personal/bdd_inventory5_diamond_co_id/EYgiNrbhkKFCjiwXN3p-iUEBwcaRPQ-t0Lmnc9Q03Kr7ug?e=21Rvk1"
-           target="_blank" rel="noopener noreferrer">
-          Rekap FPPB
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgAC270StPXeSoHI35OM97PgAaBNDOa51F3aFRMFNM6MRpo?e=RqaEIa"
-           target="_blank" rel="noopener noreferrer">
-          Master Power BI
-        </a>
-      </li>
-		
-	 <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgBFnXoqSQN1SKHTL4BqH_szAX5ZiLIuViE9JOKkSX6XPPs?e=k0iwtn"
-           target="_blank" rel="noopener noreferrer">
-          Data Mara
-        </a>
-      </li>
-		
-	 <li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgD7CwYfETXqRpUEvAWxMMjxAaOgTiucu9tKCoYTT0Wir50?e=uSZGYE"
-           target="_blank" rel="noopener noreferrer">
-          Tarik Data ZSDR003_DST
-        </a>
-      </li>
-
-<li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgAJQh6dZXYcSKKhrUka8pXOAWVu6VkB70vp8E27hghGXZs?e=eQr8Yh"
-           target="_blank" rel="noopener noreferrer">
-          Action Critical
-        </a>
-      </li>
-
-		<li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:x:/g/personal/bdd_inventory5_diamond_co_id/EcSaeUhmm_VDudCN5XPXb5UBlPfh_jK28_ybHtJNQV1d4A?e=ail510"
-           target="_blank" rel="noopener noreferrer">
-          Point Performance Weekly
-        </a>
-      </li>
-
-		<li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgCxwYrkDjJjRomcdqDKaBmiAXJkSvXimWjsL6iSuWluqx0?e=UIXWBe"
-           target="_blank" rel="noopener noreferrer">
-          Tarik Data ZWMR003_WHS For Picking Accuracy
-        </a>
-      </li>
-
-		<li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgDKz5YKtz9uRL3a_D8P1gj1AUwyGte45__Rdo0kABmq_d4?e=j2dUZn"
-           target="_blank" rel="noopener noreferrer">
-          Cycle Count
-        </a>
-      </li>
-
-		<li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgD5VFIZdz8WR5iezQw9aBReAT8dV-h-bGcelSGPEO0-oWY?e=RnMEe1"
-           target="_blank" rel="noopener noreferrer">
-          Stock Taking
-        </a>
-      </li>
-
-		<li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:x:/r/personal/bdd_inventory5_diamond_co_id/_layouts/15/Doc.aspx?sourcedoc=%7B1463D5B6-6CA1-4DA5-BAFA-2B2AAC498F29%7D&file=Master%20KPI%20CABANG%202025.xlsx&action=default&mobileredirect=true&wdOrigin=OFFICE-OFFICE-METAOS.FILEBROWSER.FILES-FOLDER"
-           target="_blank" rel="noopener noreferrer">
-          Master KPI CBG Monthly
-        </a>
-      </li>
-
-		<li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgDp_RBUt0VQSaTS-JMZ_D8bAVH1tzZl12Gdw9iSOEvxSw4?e=lvOfGd"
-           target="_blank" rel="noopener noreferrer">
-          Master KPI Sales Monthly
-        </a>
-      </li>
-
-		<li class="nav-item">
-        <a class="nav-link"
-           href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC3O1MKervbRqcoxClQdNM-AVT_WJbgaju-w--HqaJquY0?e=32QMUK"
-           target="_blank" rel="noopener noreferrer">
-          Data Inbound & Disposal
-        </a>
-      </li>
-		
-    </ul>
-  </div>
-</div>
-
-<!-- ================= DASHBOARD ================= -->	
-<div class="dashboard-wrapper d-flex">
-
-    <!-- SIDEBAR -->
-  <aside class="sidebar d-none d-md-flex flex-column">
-    <h6 class="text-muted px-3 mt-3">DASHBOARD</h6>
-		
-	<input type="text" class="form-control form-control-sm mb-3 mx-3" placeholder="Search name...">
-    <ul class="nav flex-column sidebar-links px-3">
-    <li class="nav-item">
-      <a class="nav-link"
-         href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgBxlLSkjBpjSY8JJPZi-VPhAXK65sf6kOpTxA1MLUhV3fc?e=Z8pvxe"
-         target="_blank">
-        OneDrive Share All
-      </a>
-    </li>
-    <li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC0Fjg52BemRabtg8iqzrD7AQ0HQCvODW8pKUZAffBJVGo?e=KLeNll/Dokumen WI/SOP" target="_blank">Dokumen WI / SOP</a></li>
+    <ul class="nav flex-column">
+    <li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC0Fjg52BemRabtg8iqzrD7AQ0HQCvODW8pKUZAffBJVGo?e=KLeNll/Dokumen WI/SOP" target="_blank">Dokumen WI/SOP</a></li>
 	<li><a class="nav-link" href="https://app.powerbi.com/groups/me/reports/0e1483b5-d50e-4127-90ba-117f6648b787/0c8770190c5dc5108e28?experience=power-bi/Link Dashboard Power BI All" target="_blank">Link Dashboard Power BI All</a></li>
-  	<li><a class="nav-link" href="https://app.powerbi.com/view?r=eyJrIjoiYjUyZTY5NzItOTk3ZC00MDk4LTgyMTItOWE0MTU3NjViZmI4IiwidCI6ImU0MDIwZTNkLTIzMWUtNDVmMS1iMDIzLWU0NjNiMWYwZjdmMiIsImMiOjEwfQ%3D%3D/Link Dashboard Power BI RBLM &amp; CBG" target="_blank" rel="noopener noreferrer">Link Dashboard Power BI RBLM &amp; CBG</a></li>
+  	<li><a class="nav-link" href="https://app.powerbi.com/view?r=eyJrIjoiYjUyZTY5NzItOTk3ZC00MDk4LTgyMTItOWE0MTU3NjViZmI4IiwidCI6ImU0MDIwZTNkLTIzMWUtNDVmMS1iMDIzLWU0NjNiMWYwZjdmMiIsImMiOjEwfQ%3D%3D/Link Dashboard Power BI RBLM & CBG" target="_blank">Link Dashboard Power BI RBLM & CBG</a></li>
 	<li><a class="nav-link" href="https://itsd.diamond.co.id/ITSD" target="_blank">ITSD Request</a></li>
  	<li><a class="nav-link" href="https://elearning.diamond.co.id/moodle/elearning" target="_blank">Elearning Training</a></li>
 	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgALbx2XVNvNSJdW3iUglOU2ARUewFlAnKxEoDx3Pu4qiIg?e=OJFyjZ/Pendataan Disposal CBG" target="_blank">Pendataan Disposal CBG</a></li>
@@ -275,31 +130,73 @@
     <li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgD5VFIZdz8WR5iezQw9aBReAT8dV-h-bGcelSGPEO0-oWY?e=RnMEe1/Stock Taking" target="_blank">Stock Taking</a></li>   
  	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:x:/r/personal/bdd_inventory5_diamond_co_id/_layouts/15/Doc.aspx?sourcedoc=%7B1463D5B6-6CA1-4DA5-BAFA-2B2AAC498F29%7D&file=Master%20KPI%20CABANG%202025.xlsx&action=default&mobileredirect=true&wdOrigin=OFFICE-OFFICE-METAOS.FILEBROWSER.FILES-FOLDER/Master KPI CBG" target="_blank">Master KPI CBG Monthly</a></li>
 	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgDp_RBUt0VQSaTS-JMZ_D8bAVH1tzZl12Gdw9iSOEvxSw4?e=lvOfGd/Master KPI Sales" target="_blank">Master KPI Sales Monthly</a></li>	
-	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC3O1MKervbRqcoxClQdNM-AVT_WJbgaju-w--HqaJquY0?e=32QMUK/Data Inbound & Disposal" target="_blank">Data Inbound & Disposal</a></li>	  
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC3O1MKervbRqcoxClQdNM-AVT_WJbgaju-w--HqaJquY0?e=32QMUK/Data Inbound & Disposal Disposal" target="_blank">Data Inbound & Disposal Disposal</a></li>
+	</ul>
+  </div>
+</div>
+	
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- SIDEBAR -->
+    <aside class="col-lg-2 col-md-3 sidebar p-3 d-none d-md-block">
+  <h6 class="text-muted">DASHBOARD</h6>
+
+  <ul class="nav flex-column">
+    <li>
+      <a class="nav-link active"
+         href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgBxlLSkjBpjSY8JJPZi-VPhAXK65sf6kOpTxA1MLUhV3fc?e=Z8pvxe"
+         target="_blank">
+        OneDrive Share All
+      </a>
+    </li>
+    <li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC0Fjg52BemRabtg8iqzrD7AQ0HQCvODW8pKUZAffBJVGo?e=KLeNll/Dokumen WI/SOP" target="_blank">Dokumen WI/SOP</a></li>
+	<li><a class="nav-link" href="https://app.powerbi.com/groups/me/reports/0e1483b5-d50e-4127-90ba-117f6648b787/0c8770190c5dc5108e28?experience=power-bi/Link Dashboard Power BI All" target="_blank">Link Dashboard Power BI All</a></li>
+  	<li><a class="nav-link" href="https://app.powerbi.com/view?r=eyJrIjoiYjUyZTY5NzItOTk3ZC00MDk4LTgyMTItOWE0MTU3NjViZmI4IiwidCI6ImU0MDIwZTNkLTIzMWUtNDVmMS1iMDIzLWU0NjNiMWYwZjdmMiIsImMiOjEwfQ%3D%3D/Link Dashboard Power BI RBLM & CBG" target="_blank">Link Dashboard Power BI RBLM & CBG</a></li>
+	<li><a class="nav-link" href="https://itsd.diamond.co.id/ITSD" target="_blank">ITSD Request</a></li>
+ 	<li><a class="nav-link" href="https://elearning.diamond.co.id/moodle/elearning" target="_blank">Elearning Training</a></li>
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgALbx2XVNvNSJdW3iUglOU2ARUewFlAnKxEoDx3Pu4qiIg?e=OJFyjZ/Pendataan Disposal CBG" target="_blank">Pendataan Disposal CBG</a></li>
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgD3Dgu0WMX6TI7aZQMN5uxgAThNhCzpA7n5syAkHOjd8Yk?e=3koCjG/Pendataan Disposal BDD" target="_blank">Pendataan Disposal BDD</a></li>	
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgA3NeXYRoOZQLZAyQ4hi0lCARqUf85DK0NoK76me505tZg?e=82XMlq/Disposal Principal" target="_blank">Disposal Principal</a></li>
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgBP2e5H4t17T42dAZjcoA96AXgUkVi74o7uQNyikXMlGCM?e=A1g9xA/Disposal Non Principal" target="_blank">Disposal Non Principal</a></li>	
+   	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:x:/r/personal/bdd_inventory5_diamond_co_id/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B433a90f9-1e6e-4528-bd16-fecf86325a2b%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1736914155552&web=1&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI0OS8yNDEyMDEwMDIxMyJ9/Rekap Pendataan" target="_blank">Rekap Pendataan Principal</a></li>
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:x:/r/personal/sophian_diamond_co_id/_layouts/15/Doc2.aspx?action=edit&sourcedoc=%7B8fb913b3-788b-47d7-bf0c-7ece77baaf8c%7D&wdOrigin=TEAMS-MAGLEV.teamsSdk_ns.rwc&wdExp=TEAMS-TREATMENT&wdhostclicktime=1712205843689&web=1/Rekap Batch" target="_blank">Rekap Batch</a></li>  
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:x:/g/personal/bdd_inventory5_diamond_co_id/EYgiNrbhkKFCjiwXN3p-iUEBwcaRPQ-t0Lmnc9Q03Kr7ug?e=21Rvk1/Rekap FPPB" target="_blank">Rekap FPPB</a></li> 
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgAC270StPXeSoHI35OM97PgAaBNDOa51F3aFRMFNM6MRpo?e=RqaEIa/Master Power BI" target="_blank">Master Power BI</a></li>
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgBFnXoqSQN1SKHTL4BqH_szAX5ZiLIuViE9JOKkSX6XPPs?e=k0iwtn/Data Mara" target="_blank">Data Mara</a></li>  
+    <li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgD7CwYfETXqRpUEvAWxMMjxAaOgTiucu9tKCoYTT0Wir50?e=uSZGYE/Tarikan Data ZSDR003_DST" target="_blank">Tarikan Data ZSDR003_DST</a></li>
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgAJQh6dZXYcSKKhrUka8pXOAWVu6VkB70vp8E27hghGXZs?e=eQr8Yh/Action Critical" target="_blank">Action Critical</a></li>	
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:x:/g/personal/bdd_inventory5_diamond_co_id/EcSaeUhmm_VDudCN5XPXb5UBlPfh_jK28_ybHtJNQV1d4A?e=ail510/Point Performance Weekly" target="_blank">Point Performance Weekly</a></li>  
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgCxwYrkDjJjRomcdqDKaBmiAXJkSvXimWjsL6iSuWluqx0?e=UIXWBe/Tarikan Data ZWMR003_WHS" target="_blank">Tarikan Data ZWMR003_WHS For Picking Accuracy</a></li>	
+    <li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgDKz5YKtz9uRL3a_D8P1gj1AUwyGte45__Rdo0kABmq_d4?e=j2dUZn/Cycle Count" target="_blank">Cycle Count</a></li>
+    <li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgD5VFIZdz8WR5iezQw9aBReAT8dV-h-bGcelSGPEO0-oWY?e=RnMEe1/Stock Taking" target="_blank">Stock Taking</a></li>   
+ 	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:x:/r/personal/bdd_inventory5_diamond_co_id/_layouts/15/Doc.aspx?sourcedoc=%7B1463D5B6-6CA1-4DA5-BAFA-2B2AAC498F29%7D&file=Master%20KPI%20CABANG%202025.xlsx&action=default&mobileredirect=true&wdOrigin=OFFICE-OFFICE-METAOS.FILEBROWSER.FILES-FOLDER/Master KPI CBG" target="_blank">Master KPI CBG Monthly</a></li>
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgDp_RBUt0VQSaTS-JMZ_D8bAVH1tzZl12Gdw9iSOEvxSw4?e=lvOfGd/Master KPI Sales" target="_blank">Master KPI Sales Monthly</a></li>	
+	<li><a class="nav-link" href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/sophian_diamond_co_id/IgC3O1MKervbRqcoxClQdNM-AVT_WJbgaju-w--HqaJquY0?e=32QMUK/Data Inbound & Disposal Disposal" target="_blank">Data Inbound & Disposal Disposal</a></li>	  
   </ul>
 </aside>
 
     <!-- CONTENT -->
-     <main class="main-content flex-grow-1">
-    <div class="container-fluid py-3">
+    <main class="col-md-10 p-4">
 
       <!-- HEADER + DOWNLOAD -->
-      <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-        <div class="d-flex align-items-center gap-2">
-          <img src="assets/images/logo.png" alt="Logo" class="logo">
-          <h5 class="mb-0">Supply Chain Data Analyst – Jobdesk</h5>
+      <div class="page-header">
+        <div class="page-title">
+          <img src="logo.png" alt="Logo">
+          <h2 class="mb-0">Supply Chain Data Analyst – Jobdesk</h2>
         </div>
 
         <!-- SINGLE DOWNLOAD BUTTON -->
-        <a href="downloads/jobdesk.XLSX" class="btn btn-primary btn-sm">
+        <a href="jobdesk.XLSX" class="btn btn-primary btn-sm">
           Download Jobdesk
         </a>
       </div>
 
       <!-- FILTER -->
-      <div class="filter-bar mb-3 d-flex flex-wrap gap-2">
-        <select class="form-select form-select-sm">
-   		 <option value="">All Cabang</option>
+      <div class="row mb-4 g-2">
+        <div class="col-lg-3 col-md-6 col-12 mb-3">
+          <select id="filterCabang" class="form-select form-select-sm">
+            <option value="">All Cabang</option>
             <option value="bjs">BJS</option>
             <option value="bpn">BPN</option>
             <option value="btm">BTM</option>
@@ -327,9 +224,9 @@
           </select>
         </div>
 
-        <!-- <div class="col-lg-3 col-md-6 col-12 mb-3"> -->
-       <select class="form-select form-select-sm">
-           <option value="">All Principal</option>
+        <div class="col-lg-3 col-md-6 col-12 mb-3">
+          <select id="filterPrincipal" class="form-select form-select-sm">
+            <option value="">All Principal</option>
             <option value="ferrero">Ferrero</option>
             <option value="fitmee">Fitmee</option>
             <option value="klatu">Klatu</option>
@@ -343,9 +240,9 @@
           </select>
         </div>
 
-		 <!-- <div class="col-lg-3 col-md-6 col-12 mb-3"> -->
-           <select class="form-select form-select-sm">
-           <option value="">All PIC</option>
+		 <div class="col-lg-3 col-md-6 col-12 mb-3">
+          <select id="filterPIC" class="form-select form-select-sm">
+            <option value="">All PIC</option>
             <option value="alya">Alya</option>
             <option value="fincha">Fincha</option>
             <option value="hafiz">Hafiz</option>
@@ -358,7 +255,7 @@
       <!-- ALYA -->
       <section id="alya" class="analyst-card" data-cabang="mlg pdg sby yog" data-principal="klatu smax mr_potato">
         <div class="analyst-header">
-          <img src="assets/images/alya.jpeg">
+          <img src="alya.jpeg">
           <h4 class="mb-0">Alya – Inventory & Forecast Analyst</h4>
         </div>
 
@@ -382,7 +279,7 @@
       <!-- FINCHA -->
       <section id="fincha" class="analyst-card" data-cabang="dps lbk lpg plg" data-principal="fitmee miaow">
         <div class="analyst-header">
-          <img src="assets/images/fincha.jpeg">
+          <img src="fincha.jpeg">
           <h4 class="mb-0">Fincha – Document Control, Inventory & Logistics JKT</h4>
         </div>
 		<div class="mb-2">
@@ -405,7 +302,7 @@
       <!-- HAFIZ -->
       <section id="hafiz" class="analyst-card" data-cabang="bpn halma pku mdn" data-principal="mamee vinisi">
         <div class="analyst-header">
-          <img src="assets/images/hafiz.jpeg">
+          <img src="hafiz.jpeg">
           <h4 class="mb-0">Hafiz – Logistics & Visualization Analyst</h4>
         </div>
 		
@@ -429,7 +326,7 @@
       <!-- IRVAN -->
       <section id="irvan" class="analyst-card" data-cabang="btm mdo irian5 ptk" data-principal="meiji">
         <div class="analyst-header">
-          <img src="assets/images/irvan.jpeg">
+          <img src="irvan.jpeg">
           <h4 class="mb-0">Irvan – Engineering & Control DAS System</h4>
         </div>
 		
@@ -444,7 +341,7 @@
 
         <div class="row">
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Control DAS</li><li>Monitoring System Datagate</li><li>Monitoring System SAP execution</li><li>Control Daily Macro execution</li><li>Update Dashboard BAP Bermasalah & send report</li><li>Update Dashboard Intransit</li></ul></div>
-          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Collect Branch Operational Whs & Log </li><li>Control Stock intransit </li><li>Analisa BAP bermasalah Vs intransit untuk Present</li><li>Update dan compile suhu gudang cabang</li><li>Update data MHE</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock X002 dan 9DPC</li><li>Update KPI BLS/BLM Kendaraan Rusak</li><li>Tarik Data ZSDR003_DST</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Collect Branch Operational Whs & Log </li><li>Control Stock intransit </li><li>Analisa BAP bermasalah Vs intransit untuk Present</li><li>Update dan compile suhu gudang cabang</li><li>Update data MHE</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock X002 dan 9DPC</li><li>Tarik Data ZSDR003_DST</li></ul></div>
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>Develop KPI Manager Inventory</li><li>Develop KPI Senior Supervisor Inventory</li><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Penilaian BLS</li><li>Updating Principal Claimable</li><li>Share Actual Branch Mapping</li><li>Dashboard KPI</li><li>Upload Mapping on DAS</li><li>KPI BPOM & ML BPOM(Import Team)</li><li>Control TAG (Transfer antar Gudang) HO</li><li>KPI IBOARD ( suhu storage, MHE)</li><li>KPI RBLM Dan Input Di web</li></ul></div>
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Control Issuing Valuated sit HO-Cbg dan sebaliknya</li><li>Control DO Monitoring Cbg</li><li>Control Forecast Level for BM</li><li>Control Forecast Level1, level2 dan level3</li><li>Control Forecast for Mapping Cabang</li><li>Control Booking Stock (pbi)</li><li>Control ITSD for system SAP/Magix xpa</li><li>Develop Macro vba for operational</li><li>Control and Solving BAP bermasalah</li></ul></div>
         </div>
@@ -453,7 +350,7 @@
       <!-- LIYANA -->
       <section id="liyana" class="analyst-card" data-cabang="ancol bjs bwi cmh" data-principal="puck">
         <div class="analyst-header">
-          <img src="assets/images/liyana.jpeg">
+          <img src="liyana.jpeg">
           <h4 class="mb-0">Liyana – QA & QC, Warehouse JKT  & Visualization Analyst</h4>
         </div>
 		
@@ -468,7 +365,7 @@
 		
         <div class="row">
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Data Stock Availability (National & Cabang) & send report</li><li>Update + Email Value Gagal Kirim</li><li>Monitoring Data Alokasi</li></ul></div>
-          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock 9999</li><li>Tarik Data ZSDR003_DST</li><li>Processing Data Service Level using python</li><li>Update dashboard Service Level </li><li>Update Performance BLS/BLM Service Level</li><li>Update KPI BLS/BLM Produktivitas Kendaraan</li><li>Email Update Service Level National & Cabang</li><li>Cycle Count HO</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock 9999</li><li>Tarik Data ZSDR003_DST</li><li>Processing Data Service Level using python</li><li>Update dashboard Service Level </li><li>Update Performance BLS/BLM Service Level</li><li>Update KPI BLS/BLM Kendaraan Rusak & Produktivitas Kendaraan</li><li>Email Update Service Level National & Cabang</li><li>Data Distribusi Daging</li></ul></div>
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Gagal Kirim </li><li>Audit QGMP</li><li>Update KPI Service Level Pak Sophian</li><li>Minta Data Training</li></ul></div>
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Pembuatan Dasboard Power BI</li></ul></div>
         </div>
@@ -477,7 +374,7 @@
       <!-- SAMSUDIN -->
       <section id="samsudin" class="analyst-card" data-cabang="crb irian2 mks smg" data-principal="ferrero">
         <div class="analyst-header">
-          <img src="assets/images/samsudin.jpeg">
+          <img src="samsudin.jpeg">
           <h4 class="mb-0">Samsudin – Warehouse Analyst Branch</h4>
         </div>
 		
@@ -499,12 +396,11 @@
         </div>
       </section>
 
-     <footer class="text-center mt-5">
+      <footer class="text-center mt-5">
         <small>© 2026 Supply Chain Data Analyst Team</small>
       </footer>
 
     </main>
-  	</div>
   </div>
 </div>
 
@@ -545,35 +441,6 @@
   filterCabang.addEventListener("change", applyFilter);
   filterPrincipal.addEventListener("change", applyFilter);
   filterPIC.addEventListener("change", applyFilter);
-
-	 // ===== SIDEBAR SEARCH (DESKTOP) =====
-  const sidebarSearch = document.getElementById("sidebarSearch");
-  const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
-
-  sidebarSearch.addEventListener("keyup", function () {
-    const keyword = this.value.toLowerCase();
-
-    sidebarLinks.forEach(link => {
-      const text = link.textContent.toLowerCase();
-      link.parentElement.style.display =
-        text.includes(keyword) ? "block" : "none";
-    });
-  });
-
-  // ===== SIDEBAR SEARCH (MOBILE / OFFCANVAS) =====
-  const mobileSearch = document.getElementById("mobileSidebarSearch");
-  const mobileLinks = document.querySelectorAll("#mobileSidebar .nav-link");
-
-  mobileSearch.addEventListener("keyup", function () {
-    const keyword = this.value.toLowerCase();
-
-    mobileLinks.forEach(link => {
-      const text = link.textContent.toLowerCase();
-      link.parentElement.style.display =
-        text.includes(keyword) ? "block" : "none";
-    });
-  });
-	
 </script>
 </body>
 </html>
