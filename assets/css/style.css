@@ -54,11 +54,6 @@ body {
   height: 100%;
 }
 
-.row {
-  margin: 0 !important;
-}
-
-
 /* ================= SIDEBAR ================= */
 .sidebar {
   height: 100%;
@@ -141,6 +136,61 @@ body {
   .main-content {
     padding: 12px;
   }
+
+/* ================= FIX HEIGHT & SCROLL ================= */
+
+/* pastikan root full height */
+html, body {
+  height: 100%;
 }
+
+/* dashboard area pas di bawah navbar */
+.dashboard-wrapper {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+/* row jangan maksa h-100 */
+.dashboard-wrapper .row {
+  height: 100%;
+}
+
+/* sidebar scroll sendiri */
+.sidebar {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* main content scroll sendiri */
+.main-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* cegah header + filter nempel */
+.page-header {
+  margin-bottom: 16px;
+}
+
+.filter-bar {
+  margin-bottom: 20px;
+}
+
+/* rapikan kolom jobdesk */
+.analyst-card .row > div {
+  margin-bottom: 16px;
+}
+
+/* bullet list tidak terlalu mepet */
+.analyst-card ul {
+  padding-left: 18px;
+}
+
+}
+
 
 
