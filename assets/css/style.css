@@ -8,6 +8,21 @@ html, body {
   margin: 0;
 }
 
+ /* ================= FILTER BAR ================= */
+
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px; /* 🔥 JARAK AMAN */
+  flex-wrap: wrap;
+}
+
+.filter-bar select {
+  max-width: 240px;
+}
+
+
+
 /* ================= BODY ================= */
 body {
   background: #f8f9fa;
@@ -35,12 +50,14 @@ body {
 }
 
 /* ================= BOOTSTRAP RESET ================= */
-.container-fluid,
-.row {
+.container-fluid {
   height: 100%;
-  margin: 0 !important;
-  padding: 0 !important;
 }
+
+.row {
+  margin: 0 !important;
+}
+
 
 /* ================= SIDEBAR ================= */
 .sidebar {
@@ -125,4 +142,5 @@ body {
     padding: 12px;
   }
 }
+
 
