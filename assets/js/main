@@ -1,40 +1,56 @@
-const filterCabang = document.getElementById("filterCabang");
-const filterPrincipal = document.getElementById("filterPrincipal");
-const filterPIC = document.getElementById("filterPIC");
-const cards = document.querySelectorAll(".analyst-card");
+document.addEventListener("DOMContentLoaded", () => {
 
-function applyFilter() {
-  const cabangValue = filterCabang.value.toLowerCase();
-  const principalValue = filterPrincipal.value.toLowerCase();
-  const picValue = filterPIC.value.toLowerCase();
+  /* ================= ELEMENT ================= */
+  const globalSearch = document.getElementById("globalSearch");
 
-  cards.forEach(card => {
-    const cabangData = card.dataset.cabang.toLowerCase();
-    const principalData = card.dataset.principal.toLowerCase();
-    const picData = card.id.toLowerCase();
+  const filterCabang = document.getElementById("filterCabang");
+  const filterPrincipal = document.getElementById("filterPrincipal");
+  const filterPIC = document.getElementById("filterPIC");
 
-    const matchCabang = cabangValue === "" || cabangData.includes(cabangValue);
-    const matchPrincipal = principalValue === "" || principalData.includes(principalValue);
-    const matchPIC = picValue === "" || picData === picValue;
+  const cards = document.querySelectorAll(".analyst-card");
+  const sidebarItems = document.querySelectorAll(
+    "#sidebarMenu li, #mobileSidebarMenu li"
+  );
 
-    card.style.display =
-      matchCabang && matchPrincipal && matchPIC ? "block" : "none";
-  });
-}
+  /* ================= FILTER FUNCTION ================= */
+  function applyAllFilters() {
+    const keyword = globalSearch.value.toLowerCase();
+    const cabangValue = filterCabang.value.toLowerCase();
+    const principalValue = filterPrincipal.value.toLowerCase();
+    const picValue = filterPIC.value.toLowerCase();
 
-// events
-filterCabang.addEventListener("change", applyFilter);
-filterPrincipal.addEventListener("change", applyFilter);
-filterPIC.addEventListener("change", applyFilter);
+    /* -------- JOBDESK -------- */
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      const cabang = card.dataset.cabang.toLowerCase();
+      const principal = card.dataset.principal.toLowerCase();
+      const pic = card.id.toLowerCase();
 
-// sidebar search desktop
-const sidebarSearch = document.getElementById("sidebarSearch");
-const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
+      const matchSearch = keyword === "" || text.includes(keyword);
+      const matchCabang = cabangValue === "" || cabang.includes(cabangValue);
+      const matchPrincipal = principalValue === "" || principal.includes(principalValue);
+      const matchPIC = picValue === "" || pic === picValue;
 
-sidebarSearch.addEventListener("keyup", function () {
-  const keyword = this.value.toLowerCase();
-  sidebarLinks.forEach(link => {
-    link.parentElement.style.display =
-      link.textContent.toLowerCase().includes(keyword) ? "block" : "none";
-  });
+      card.style.display =
+        matchSearch && matchCabang && matchPrincipal && matchPIC
+          ? "block"
+          : "none";
+    });
+
+    /* -------- SIDEBAR (Dokumen / OneDrive / Power BI) -------- */
+    sidebarItems.forEach(item => {
+      const text = item.innerText.toLowerCase();
+      item.style.display =
+        keyword === "" || text.includes(keyword)
+          ? "block"
+          : "none";
+    });
+  }
+
+  /* ================= EVENTS ================= */
+  globalSearch.addEventListener("keyup", applyAllFilters);
+  filterCabang.addEventListener("change", applyAllFilters);
+  filterPrincipal.addEventListener("change", applyAllFilters);
+  filterPIC.addEventListener("change", applyAllFilters);
+
 });
