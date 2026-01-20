@@ -94,7 +94,7 @@
     Inventory | Warehouse | Logistics
   </span>
 </nav>
-	
+
 <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileSidebar">
   <div class="offcanvas-header">
     <h6 class="offcanvas-title">DASHBOARD</h6>
@@ -106,7 +106,8 @@
            class="form-control form-control-sm mb-3"
            placeholder="Search name...">
 
-    <ul class="nav flex-column">
+    <ul class="nav flex-column" id="mobileSidebarMenu">
+
 
 	<li>
       <a class="nav-link active"
@@ -310,7 +311,15 @@
     <aside class="col-lg-2 col-md-3 sidebar p-3 d-none d-md-block">
   <h6 class="text-muted">DASHBOARD</h6>
 
-  <ul class="nav flex-column">
+  <input
+  type="text"
+  id="globalSearch"
+  class="form-control form-control-sm mb-3"
+  placeholder="🔍 Search Name...">
+
+
+  <ul class="nav flex-column" id="sidebarMenu">
+
     <li>
       <a class="nav-link active"
          href="https://diamondindonesia-my.sharepoint.com/:f:/g/personal/bdd_inventory5_diamond_co_id/IgBxlLSkjBpjSY8JJPZi-VPhAXK65sf6kOpTxA1MLUhV3fc?e=Z8pvxe"
@@ -533,7 +542,7 @@
 		
         <div class="row">
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Daily</h6><ul><li>Data Stock Availability (National & Cabang) & send report</li><li>Update + Email Value Gagal Kirim</li><li>Monitoring Data Alokasi</li></ul></div>
-          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock 9999</li><li>Tarik Data ZSDR003_DST</li><li>Processing Data Service Level using python</li><li>Update dashboard Service Level </li><li>Update Performance BLS/BLM Service Level</li><li>Update KPI BLS/BLM Kendaraan Rusak & Produktivitas Kendaraan</li><li>Email Update Service Level National & Cabang</li><li>Data Distribusi Daging</li></ul></div>
+          <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Weekly</h6><ul><li>Movement Review ED & Near ED</li><li>Update Data Dashboard Disposal Principal</li><li>Control Stock 9999</li><li>Tarik Data ZSDR003_DST</li><li>Processing Data Service Level using python</li><li>Update dashboard Service Level </li><li>Update Performance BLS/BLM Service Level</li><li>Update KPI BLS/BLM Kendaraan Rusak & Produktivitas Kendaraan</li><li>Email Update Service Level National & Cabang</li><li>Cycle Count HO</li></ul></div>
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Monthly</h6><ul><li>Pendataan Principal ( patokan tgl 1 setiap bulannya )</li><li>Proses Pemusnahan (Disposal) Sesuai Approval Team SD </li><li>Gagal Kirim </li><li>Audit QGMP</li><li>Update KPI Service Level Pak Sophian</li><li>Minta Data Training</li></ul></div>
           <div class="col-lg-3 col-md-6 col-12 mb-3"><h6>Tentative</h6><ul><li>Create PO STO ( Principal )</li><li>FPPB Cabang</li><li>Perubahan Batch</li><li>Pembuatan Dasboard Power BI</li></ul></div>
         </div>
@@ -574,49 +583,67 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+  const globalSearch = document.getElementById("globalSearch");
+
   const filterCabang = document.getElementById("filterCabang");
   const filterPrincipal = document.getElementById("filterPrincipal");
   const filterPIC = document.getElementById("filterPIC");
+
   const cards = document.querySelectorAll(".analyst-card");
 
-  function applyFilter() {
+  const sidebarItems = document.querySelectorAll(
+    "#sidebarMenu li, #mobileSidebarMenu li"
+  );
+
+  function applyAllFilters() {
+    const keyword = globalSearch.value.toLowerCase();
     const cabangValue = filterCabang.value.toLowerCase();
     const principalValue = filterPrincipal.value.toLowerCase();
     const picValue = filterPIC.value.toLowerCase();
 
+    /* ================= JOBDESK FILTER ================= */
     cards.forEach(card => {
-      const cabangData = card.dataset.cabang.toLowerCase();
-      const principalData = card.dataset.principal.toLowerCase();
-      const picData = card.id.toLowerCase(); // FIX DI SINI
+      const text = card.innerText.toLowerCase();
+      const cabang = card.dataset.cabang.toLowerCase();
+      const principal = card.dataset.principal.toLowerCase();
+      const pic = card.id.toLowerCase();
+
+      const matchSearch =
+        keyword === "" || text.includes(keyword);
 
       const matchCabang =
-        cabangValue === "" || cabangData.includes(cabangValue);
+        cabangValue === "" || cabang.includes(cabangValue);
 
       const matchPrincipal =
-        principalValue === "" || principalData.includes(principalValue);
+        principalValue === "" || principal.includes(principalValue);
 
       const matchPIC =
-        picValue === "" || picData === picValue;
+        picValue === "" || pic === picValue;
 
-      if (matchCabang && matchPrincipal && matchPIC) {
-        card.style.display = "block";
-      } else {
-        card.style.display = "none";
-      }
+      card.style.display =
+        matchSearch && matchCabang && matchPrincipal && matchPIC
+          ? "block"
+          : "none";
+    });
+
+    /* ================= SIDEBAR FILTER ================= */
+    sidebarItems.forEach(item => {
+      const text = item.innerText.toLowerCase();
+      item.style.display =
+        keyword === "" || text.includes(keyword)
+          ? "block"
+          : "none";
     });
   }
 
-  filterCabang.addEventListener("change", applyFilter);
-  filterPrincipal.addEventListener("change", applyFilter);
-  filterPIC.addEventListener("change", applyFilter);
-
-	<!-- NAVBAR -->
-  <script src="assets/js/main.js">
-
+  globalSearch.addEventListener("keyup", applyAllFilters);
+  filterCabang.addEventListener("change", applyAllFilters);
+  filterPrincipal.addEventListener("change", applyAllFilters);
+  filterPIC.addEventListener("change", applyAllFilters);
 </script>
+
+ <!-- NAVBAR -->
+  <script src="assets/js/main.js"></script>
+
 </body>
 </html>
-
-
-
-
